@@ -2,8 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61335403-802d-406f-b5ad-89ff1d9bb73c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/public/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/public/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/public/mix-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/resources/js/components/ExampleComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/resources/sass/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/resources/sass/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/verify.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/resources/views/home.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cms/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/blog-php.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blog-php.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/cms/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/cms/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/cms/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/cms/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/cms/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/cms/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +155,7 @@
       <path value="$PROJECT_DIR$/cms/vendor/phpunit/php-file-iterator" />
       <path value="$PROJECT_DIR$/cms/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/cms/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/cms/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iMzvuFe9BWHdp5VtU40T66Z7cH" />
@@ -142,8 +172,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -157,7 +193,7 @@
       <workItem from="1601732486279" duration="417000" />
       <workItem from="1601732927907" duration="115000" />
       <workItem from="1601734070914" duration="1252000" />
-      <workItem from="1601747446153" duration="1143000" />
+      <workItem from="1601747446153" duration="3190000" />
     </task>
     <servers />
   </component>
@@ -172,9 +208,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1601733019732" />
-    <state x="184" y="8" key="SettingsEditor" timestamp="1601747473362">
+    <state x="184" y="8" key="SettingsEditor" timestamp="1601749211192">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1601747473362" />
+    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1601749211192" />
   </component>
 </project>
