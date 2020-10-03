@@ -2,46 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61335403-802d-406f-b5ad-89ff1d9bb73c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cms/database/blog-php.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/ad01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/ad01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/ad02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/ad02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/ad03.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/ad03.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/ad04.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/ad04.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/ad05.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/ad05.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/ad06.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/ad06.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/admin.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/admin.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/articulo.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/articulo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/articulos/articulo-01/articulo01.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/articulos/articulo-01/articulo01.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/articulos/articulo-02/articulo02.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/articulos/articulo-02/articulo02.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/articulos/articulo-03/articulo03.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/articulos/articulo-03/articulo03.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/articulos/articulo-04/articulo04.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/articulos/articulo-04/articulo04.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/articulos/articulo-05/articulo05.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/articulos/articulo-05/articulo05.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/articulos/articulo-06/articulo06.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/articulos/articulo-06/articulo06.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/articulos/articulo-07/articulo07.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/articulos/articulo-07/articulo07.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/articulos/articulo-08/articulo08.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/articulos/articulo-08/articulo08.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/articulos/articulo-09/articulo09.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/articulos/articulo-09/articulo09.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/articulos/articulo-10/articulo10.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/articulos/articulo-10/articulo10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/banner01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/banner01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/banner02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/banner02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/banner03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/banner03.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/banner04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/banner04.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/bannerGrande01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/bannerGrande01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/categorias/africa.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/categorias/africa.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/categorias/asia.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/categorias/asia.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/categorias/centroamerica.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/categorias/centroamerica.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/categorias/europa.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/categorias/europa.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/categorias/norteamerica.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/categorias/norteamerica.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/categorias/suramerica.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/categorias/suramerica.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/espacio.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/espacio.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/flecha.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/flecha.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/globo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/globo.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/icono.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/icono.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/logotipo-negativo.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/logotipo-negativo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/separador.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/separador.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/sobreMi.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/sobreMi.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/subirFoto.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/subirFoto.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/usuarios/default.png" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/usuarios/default.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vistas/img/usuarios/user01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/vistas/img/usuarios/user01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cms/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/cms/.env.example" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +157,7 @@
       <workItem from="1601732486279" duration="417000" />
       <workItem from="1601732927907" duration="115000" />
       <workItem from="1601734070914" duration="1252000" />
-      <workItem from="1601747446153" duration="975000" />
+      <workItem from="1601747446153" duration="1143000" />
     </task>
     <servers />
   </component>
