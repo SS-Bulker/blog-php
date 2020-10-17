@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61335403-802d-406f-b5ad-89ff1d9bb73c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/public/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/public/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/public/mix-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/resources/js/components/ExampleComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/resources/sass/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/resources/sass/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/resources/views/auth/verify.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/resources/views/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cms/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/blog-php.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blog-php.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/cms/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cms/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/cms/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/cms/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/cms/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cms/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/cms/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +163,8 @@
       <workItem from="1601732486279" duration="417000" />
       <workItem from="1601732927907" duration="115000" />
       <workItem from="1601734070914" duration="1252000" />
-      <workItem from="1601747446153" duration="3190000" />
+      <workItem from="1601747446153" duration="5820000" />
+      <workItem from="1601903860357" duration="1099000" />
     </task>
     <servers />
   </component>

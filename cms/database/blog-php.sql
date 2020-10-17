@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 03-10-2020 a las 18:03:15
+-- Tiempo de generación: 17-10-2020 a las 13:08:49
 -- Versión del servidor: 5.7.24
--- Versión de PHP: 7.4.10
+-- Versión de PHP: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
