@@ -36,7 +36,7 @@
 
   @include('modulos.sidebar')
 
-  @include('paginas.blog')
+  @yield('content')
 
   @include('modulos.footer')
 
