@@ -65,8 +65,8 @@
 
             <div class="card-body">
 
-              @foreach($blog as $element)
-                {{$element}}
+              @foreach($blog as $key => $value)
+                {{$value}}
               @endforeach
 
             </div>
