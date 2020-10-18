@@ -26,7 +26,10 @@ Route::view('/banner', 'paginas.banner');
 Route::view('/anuncios', 'paginas.anuncios');
 
 
-Route::get('/', 'BlogController@traerBlog');
+Route::get('/', 'App\Http\Controllers\BlogController@traerBlog');
+//Route::get('/', 'App\Http\Controllers\AdministradoresController@traerAdministradores');
+
+
 
 Auth::routes();
 
