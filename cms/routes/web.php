@@ -27,7 +27,17 @@ Route::view('/anuncios', 'paginas.anuncios');
 
 
 Route::get('/', 'App\Http\Controllers\BlogController@traerBlog');
-//Route::get('/', 'App\Http\Controllers\AdministradoresController@traerAdministradores');
+Route::get('/administradores', 'App\Http\Controllers\AdministradoresController@traerAdministradores');
+Route::get('/categorias', 'App\Http\Controllers\CategoriasController@traerCategorias');
+Route::get('/articulos', 'App\Http\Controllers\ArticulosController@traerArticulos');
+Route::get('/opiniones', 'App\Http\Controllers\OpinionesController@traerOpiniones');
+Route::get('/banner', 'App\Http\Controllers\BannerController@traerBanner');
+Route::get('/anuncios', 'App\Http\Controllers\AnunciosController@traerAnuncios');
+
+
+
+
+
 
 
 
