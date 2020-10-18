@@ -8,7 +8,7 @@ use App\Models\Blog;
 
 class BlogController extends Controller
 {
-    public function traerBlog(){
+    public function index(){
 
         $blog = Blog::all();
 

@@ -9,7 +9,7 @@ use App\Models\Categorias;
 class CategoriasController extends Controller
 {
     //
-    public function traerCategorias(){
+    public function index(){
 
         $categorias = Categorias::all();
 

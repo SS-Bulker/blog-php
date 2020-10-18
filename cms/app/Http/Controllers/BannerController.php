@@ -9,7 +9,7 @@ use App\Models\Banner;
 class BannerController extends Controller
 {
     //
-    public function traerBanner(){
+    public function index(){
 
         $banner = Banner::all();
 

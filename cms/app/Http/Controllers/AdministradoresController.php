@@ -9,7 +9,7 @@ use App\Models\Administradores;
 class AdministradoresController extends Controller
 {
     //
-    public function traerAdministradores(){
+    public function index(){
         $administradores = Administradores::all();
 
         return view('paginas.administradores', array('administradores' => $administradores));

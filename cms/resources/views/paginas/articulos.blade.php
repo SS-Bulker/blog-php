@@ -64,11 +64,14 @@
            </div>
 
            <div class="card-body">
-
+            <ul>
             @foreach($articulos as $key => $value)
-              {{$value}}
+            <li>
+              <h3>{{$value['titulo_articulo']}}</h3>
+            <h5>{{$value->categorias['titulo_categoria']}}</h5>
+            </li>
             @endforeach
-
+           </ul>
            </div>
            <!-- /.card-body -->
            <div class="card-footer">
