@@ -142,7 +142,7 @@
                             }
                           @endphp
 
-                          <input type="text" class="form-control" name="palabras_claves" value="{{$palabras_claves}}" required>
+                          <input type="text" class="form-control" name="palabras_claves" value="{{$palabras_claves}}" data-role="tagsinput" required>
 
                         </div>
 
@@ -341,14 +341,14 @@
                 </div>
 
                 <div class="col-lg-6">
-
+                  {{-- SOBRE MI --}}
                   <div class="card">
                     
                     <div class="card-body">
 
                       <label for="">Sobre mi <span class="small">(Intro)</span></label>
 
-                    <textarea class="form-control" name="sobre_mi" id=""  rows="10">{{$element->sobre_mi}}</textarea>
+                    <textarea class="form-control summernote-sm" name="sobre_mi" id=""  rows="10">{{$element->sobre_mi}}</textarea>
 
                     </div>
 
@@ -357,7 +357,7 @@
                 </div>
 
                 <div class="col-lg-6">
-
+                  {{-- SOBRE MI COMPLETO --}}
                   <div class="card">
                     
                     <div class="card-body">
@@ -365,7 +365,7 @@
                       <label for="">Sobre mi completo <span class="small">(Completo)</span></label>
 
 
-                      <textarea class="form-control" name="sobre_mi_completo" id="" rows="10">{{$element->sobre_mi_completo}}</textarea>
+                      <textarea class="form-control summernote-smc" name="sobre_mi_completo" id="" rows="10">{{$element->sobre_mi_completo}}</textarea>
 
                     </div>
 
