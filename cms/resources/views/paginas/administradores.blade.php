@@ -48,7 +48,7 @@
 
            <div class="card-header">
 
-            <button type="button" class="btn btn-success float-left">Crear nuevo administrador</button>
+            <button class="btn btn-success float-left" data-toggle="modal" data-target="#crearAdministrador">Crear nuevo administrador</button>
 
              <div class="card-tools">
 
@@ -86,12 +86,21 @@
                 <td>{{($key+1)}}</td>
                 <td>{{$value->name}}</td>
                 <td>{{$value->email}}</td>
-                <td><img src="{{$value->foto}}" alt="" class="img-fluid rounded-circle"></td>
-                <td>{{$value->rol}}</td>
+                @if($value->foto == '')
+                <td><img src="{{url('/')}}/img/administradores/admin.png" alt="" class="img-fluid rounded-circle"></td>
+                @else  
+                <td><img src="{{url('/')}}/{{$value->foto}}" alt="" class="img-fluid rounded-circle"></td>
+                @endif
+                @if($value->rol == '')
+                  <td>administrador</td>
+                  @else
+                  <td>{{$value->rol}}</td>
+                @endif
+                
                 <td>
                   <div class="boton-group">
-                    <button type="button" class="btn btn-warning float-left"><i class="fas fa-pencil-alt"></i></button>
-                    <button type="button" class="btn btn-danger float-left"><i class="fas fa-trash-alt"></i></button>
+                    <button type="button" class="btn btn-warning mr-1"><i class="fas fa-pencil-alt"></i></button>
+                    <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                   </div>
                 </td>
                 </tr>
@@ -107,7 +116,7 @@
            <!-- /.card-body -->
            <div class="card-footer">
 
-            <button type="button" class="btn btn-success float-right">Crear nuevo administrador</button>
+            <button class="btn btn-success float-right" data-toggle="modal" data-target="#crearAdministrador">Crear nuevo administrador</button>
 
            </div>
            <!-- /.card-footer-->
@@ -123,5 +132,107 @@
  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<!-- Modal para crear administradores -->
+<div class="modal" id="crearAdministrador">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <form method="POST" action="{{ route('register') }}">
+        @csrf
+
+        <div class="modal-header bg-info">
+
+          <h3 class="card-title">Agregar un nuevo tercero</h3>
+
+          <div class="card-tools">
+
+            <button type="button" class="btn btn-tool close" data-dismiss="modal">
+              
+              <i class="fas fa-times"></i></button>
+
+          </div>
+
+        </div>
+
+        <div class="modal-body">
+          <!-- Modal para editar al usuario -->
+
+          {{-- Nombre --}}
+            <div class="input-group mb-3">
+                <div class="input-group-append input-group-text">
+                  <i class="fas fa-users"></i>
+                </div>
+
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Ingresa el nombre completo del administrador" autofocus>
+
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+
+            {{-- Correo --}}
+            <div class="input-group mb-3">
+                <div class="input-group-append input-group-text">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Ingresa el correo electronico del administrador" required autocomplete="email">
+
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+              </div>
+
+            {{-- Contraseña --}}
+            <div class="input-group mb-3">
+              <div class="input-group-append input-group-text">
+                <i class="fas fa-key"></i>
+              </div>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Contraseña minimo de 8 caracteres" required autocomplete="new-password">
+
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+            </div>
+
+            {{-- Confirmar COntraseña --}}
+            <div class="input-group mb-3">
+              <div class="input-group-append input-group-text">
+                <i class="fas fa-key"></i>
+              </div>
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirma la contraseña para el administrador" required autocomplete="new-password">
+              </div>
+            
+        
+        </div>
+
+        <div class="modal-footer d-flex justify-content-between">
+
+          <div>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          </div>
+          
+          <div>
+            <button type="submit" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 @endsection
