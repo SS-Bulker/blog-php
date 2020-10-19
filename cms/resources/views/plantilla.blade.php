@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="{{$blog[0]["icono"]}}">
+  <link rel="icon" href="{{$blog[0]['icono']}}">
 
   <title>Blog del viajero | Dashboard ~ CMS</title>
   <!-- Tell the browser to be responsive to screen width -->

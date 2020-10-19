@@ -139,7 +139,7 @@ class BlogController extends Controller
                     $destino = \imagecreatetruecolor($nuevoAncho, $nuevoAlto);
                     imagealphablending($destino, FALSE);
                     imagesavealpha($destino, TRUE);
-                    \imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                    \imagecopyresampled($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
                     \imagepng($destino, $rutaLogo);
 
                    }
@@ -176,7 +176,7 @@ class BlogController extends Controller
                     $destino = \imagecreatetruecolor($nuevoAncho, $nuevoAlto);
                     imagealphablending($destino, FALSE);
                     imagesavealpha($destino, TRUE);
-                    \imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                    \imagecopyresampled($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
                     \imagepng($destino, $rutaPortada);
 
                    }
@@ -213,7 +213,7 @@ class BlogController extends Controller
                     $destino = \imagecreatetruecolor($nuevoAncho, $nuevoAlto);
                     imagealphablending($destino, FALSE);
                     imagesavealpha($destino, TRUE);
-                    \imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                    \imagecopyresampled($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
                     \imagepng($destino, $rutaIcono);
 
                    }
