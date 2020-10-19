@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Models\Opiniones;
 
+use App\Models\Blog;
+
 class OpinionesController extends Controller
 {
     //
     public function index(){
 
+        $blog = Blog::all();
         $opiniones = Opiniones::all();
 
-        return view('paginas.opiniones', array('opiniones'=>$opiniones));
+        return view('paginas.opiniones', array('opiniones'=>$opiniones, 'blog'=>$blog));
     }
 }

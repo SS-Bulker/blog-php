@@ -48,7 +48,7 @@
 
            <div class="card-header">
 
-             <h3 class="card-title">Title</h3>
+            <button type="button" class="btn btn-success float-left">Crear nuevo administrador</button>
 
              <div class="card-tools">
 
@@ -65,15 +65,49 @@
 
            <div class="card-body">
 
-             @foreach($administradores as $key => $value)
-               {{$value}}
-             @endforeach
+            <table class="table table-bordered table-triped" width="100%">
+
+              <thead>
+
+                <tr>
+                  <th>#</th>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th width="100px">Foto</th>
+                  <th>Rol</th>
+                  <th>Accíones</th>
+                </tr>
+
+              </thead>
+              <tbody>
+                @foreach($administradores as $key => $value)
+                
+                <tr>
+                <td>{{($key+1)}}</td>
+                <td>{{$value->name}}</td>
+                <td>{{$value->email}}</td>
+                <td><img src="{{$value->foto}}" alt="" class="img-fluid rounded-circle"></td>
+                <td>{{$value->rol}}</td>
+                <td>
+                  <div class="boton-group">
+                    <button type="button" class="btn btn-warning float-left"><i class="fas fa-pencil-alt"></i></button>
+                    <button type="button" class="btn btn-danger float-left"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </td>
+                </tr>
+
+                @endforeach
+              </tbody>
+
+            </table>
+
+            
 
            </div>
            <!-- /.card-body -->
            <div class="card-footer">
 
-             Footer
+            <button type="button" class="btn btn-success float-right">Crear nuevo administrador</button>
 
            </div>
            <!-- /.card-footer-->
