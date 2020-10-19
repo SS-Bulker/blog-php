@@ -7,14 +7,14 @@ if(isset($_FILES["file"]["name"])){
 		$titulo = md5(rand(100, 200));
 		$extension = explode('.', $_FILES['file']['name']);
 		$archivo = $titulo.'.'.$extension[1];
-		$destino = '../img/temp/blog/'.$archivo; 
+		$destino = '../img/temp/'.$archivo; 
 		$origen = $_FILES["file"]["tmp_name"];
 		move_uploaded_file($origen, $destino);
-		echo $_POST["ruta"].'/img/temp/blog/'.$archivo;
+		echo $_POST["ruta"].'/img/temp/'.$archivo;
 
 	}else{
 
-		echo  $mensaje = 'Ooops!  El archivo temporal no se puedo cear:  '.$_FILES['file']['error'];
+		echo  $mensaje = 'Ooops!  El archivo temporal no se puedo crear:  '.$_FILES['file']['error'];
 
 	}
 
