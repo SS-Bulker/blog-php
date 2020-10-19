@@ -11,8 +11,8 @@ AGREGAR RED
 $(document).on("click", ".agregarRed", function(){
 
 	var url = $("#url_red").val();
-	var icono = $("#icono_red").val().split(",")[0];
-	var color = $("#icono_red").val().split(",")[1];
+	var icono = $("#icono-red").val().split(",")[0];
+	var color = $("#icono-red").val().split(",")[1];
 
 	$(".listadoRed").append(`
 
@@ -104,7 +104,7 @@ $("input[type='file']").change(function(){
     VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
     =============================================*/
 
-    if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
+    if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png" && imagen["type"] != "image/jpg"){
 
     	$("input[type='file']").val("");
 

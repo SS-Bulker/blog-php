@@ -220,9 +220,12 @@
                           {{-- FIN DEL ROW --}}
 
                           {{-- ROW VISUALIZAR REDES SOCIALES --}}
-                          <div class="row">
+                          <div class="row listadoRed">
 
                           @php
+                            echo "<input type='hidden' value='".$element->redes_sociales."' name='redes_sociales' id='listaRed'>";
+
+
                             $redes = json_decode($element->redes_sociales, true);
 
                             foreach ($redes as $key => $value) {
@@ -247,7 +250,7 @@
 
                                   <div class="input-group-text" style="background: red; color: white; cursor: pointer;">
 
-                                    <span class="bg-danger px-2 rounded-circle">&times;</span>
+                                    <span class="bg-danger px-2 rounded-circle eliminarRed" red="'.$value['icono'].'" url="'.$value['url'].'">&times;</span>
 
                                   </div>
 
@@ -287,11 +290,13 @@
 
                               <i class="fas fa-paperclip"></i> Adjuntar imagen de logo
 
-                              <input type="file" class="form-control" name="logo">
+                              <input type="file" name="logo">
 
                             </div>
 
-                            <img src="{{url('/')}}/{{$element->logo}}" alt=""class="img-fluid py-2 bg-secondary">
+                            <br>
+
+                            <img src="{{url('/')}}/{{$element->logo}}" class="img-fluid py-2 bg-secondary previsualizarImg_logo">
 
                             <p class="help-block small mt-3">Dimensiones: 700px * 200px | Peso maximo: 2mb | Fomrato: JPG o PNG</p>
 
@@ -306,11 +311,13 @@
 
                               <i class="fas fa-paperclip"></i> Adjuntar imagen de portada
 
-                              <input type="file" class="form-control" name="portada">
+                              <input type="file" name="portada">
 
                             </div>
 
-                            <img src="{{url('/')}}/{{$element->portada}}" alt=""class="img-fluid py-2 bg-secondary">
+                            <br>
+
+                            <img src="{{url('/')}}/{{$element->portada}}" class="img-fluid py-2 previsualizarImg_portada">
 
                             <p class="help-block small mt-3">Dimensiones: 700px * 420px | Peso maximo: 2mb | Fomrato: JPG o PNG</p>
 
@@ -331,7 +338,7 @@
 
                             <br>
 
-                            <img src="{{url('/')}}/{{$element->icono}}" alt=""class="img-fluid py-2 rounded-circle">
+                            <img src="{{url('/')}}/{{$element->icono}}" class="img-fluid py-2 rounded-circle previsualizarImg_icono">
 
                             <p class="help-block small mt-3">Dimensiones: 150px * 150px | Peso maximo: 2mb | Fomrato: JPG o PNG</p>
 
