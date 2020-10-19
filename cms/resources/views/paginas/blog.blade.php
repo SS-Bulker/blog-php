@@ -48,7 +48,7 @@
                 
           @endforeach
 
-        <form action="{{url('/')}}/blog/{{$element->id}}" method="POST">
+        <form action="{{url('/')}}/blog/{{$element->id}}" method="POST" enctype="multipart/form-data">
 
           @method('PUT')
 
@@ -291,6 +291,7 @@
                               <i class="fas fa-paperclip"></i> Adjuntar imagen de logo
 
                               <input type="file" name="logo">
+                              <input type="hidden" name="logo_actual" value="{{$element->logo}}" required>
 
                             </div>
 
@@ -312,6 +313,7 @@
                               <i class="fas fa-paperclip"></i> Adjuntar imagen de portada
 
                               <input type="file" name="portada">
+                              <input type="hidden" name="portada_actual" value="{{$element->portada}}" required>
 
                             </div>
 
@@ -333,6 +335,7 @@
                               <i class="fas fa-paperclip"></i> Adjuntar imagen de icono
 
                               <input type="file" class="form-control" name="icono">
+                              <input type="hidden" name="icono_actual" value="{{$element->icono}}" required>
 
                             </div>
 
@@ -419,6 +422,20 @@
   notie.alert({
     type: 2,
     text: '¡Hay campos no válidos en el formulario!',
+    time: 7
+  })
+
+</script>
+
+@endif
+
+@if(Session::has('no-validacion-image'))
+
+<script>
+
+  notie.alert({
+    type: 2,
+    text: '¡Alguna de las imágenes no tienen el formato correcto!',
     time: 7
   })
 

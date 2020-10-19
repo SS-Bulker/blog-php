@@ -11,7 +11,7 @@ $totalPaginas = ceil(count($totalArticulos)/5);
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	
 	<meta charset="UTF-8">
@@ -150,7 +150,7 @@ $totalPaginas = ceil(count($totalArticulos)/5);
 			<meta property="og:title" content="'.$blog["titulo"].'">
 			<meta property="og:description" content="'.$blog["descripcion"].'">
 			<meta property="og:type" content="Type">
-			<meta property="og:image" content="'.$blog["dominio"].$blog["portada"].'">
+			<meta property="og:image" content="'.$blog["servidor"].$blog["portada"].'">
 			<meta property="og:url" content="'.$blog["dominio"].'">';
 
 		}
@@ -180,14 +180,14 @@ $totalPaginas = ceil(count($totalArticulos)/5);
 			<meta property="og:title" content="'.$blog["titulo"].'">
 			<meta property="og:description" content="'.$blog["descripcion"].'">
 			<meta property="og:type" content="Type">
-			<meta property="og:image" content="'.$blog["dominio"].$blog["portada"].'">
+			<meta property="og:image" content="'.$blog["servidor"].$blog["portada"].'">
 			<meta property="og:url" content="'.$blog["dominio"].'">';
 
 	}	 
 
 	?>
 
-	<link rel="icon" href="<?php echo $blog["dominio"];?>vistas/img/icono.jpg">
+	<link rel="icon" href="<?php echo $blog["servidor"].['icono'];?>">
 
 	<!--=====================================
 	PLUGINS DE CSS
