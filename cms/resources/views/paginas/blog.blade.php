@@ -43,12 +43,23 @@
       <div class="row">
 
         <div class="col-12">
+
+          @foreach($blog as $element)
+                
+          @endforeach
+
+        <form action="{{url('/')}}/blog/{{$element->id}}" method="POST">
+
+          @method('PUT')
+
+          @csrf
+
           <!-- Default box -->
           <div class="card card-primary card-outline">
 
             <div class="card-header">
 
-              <button class="btn btn-primary float-left">Guardar cambios</button>
+              <button type="submit" class="btn btn-primary float-left">Guardar cambios</button>
 
               <div class="card-tools">
 
@@ -64,10 +75,6 @@
             </div>
 
             <div class="card-body">
-
-              @foreach($blog as $element)
-                
-              @endforeach
 
               <div class="row">
                 
@@ -379,12 +386,14 @@
             <!-- /.card-body -->
             <div class="card-footer">
 
-              <button class="btn btn-primary float-right">Guardar cambios</button>
+              <button type="submit" class="btn btn-primary float-right">Guardar cambios</button>
 
             </div>
             <!-- /.card-footer-->
           </div>
           <!-- /.card -->
+          </form>
+
         </div>
 
       </div>
@@ -395,5 +404,47 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+@if(Session::has('no-validacion'))
+
+<script>
+
+  notie.alert({
+    type: 2,
+    text: '¡Hay campos no válidos en el formulario!',
+    time: 7
+  })
+
+</script>
+
+@endif
+
+@if(Session::has('ok-editado'))
+
+<script>
+
+  notie.alert({
+    type: 1,
+    text: '¡El blog ha sido actualizado corectamente!',
+    time: 7
+  })
+
+</script>
+
+@endif
+
+@if(Session::has('error'))
+
+<script>
+
+  notie.alert({
+    type: 3,
+    text: '¡Error al editar!',
+    time: 7
+  })
+
+</script>
+
+@endif
 
 @endsection

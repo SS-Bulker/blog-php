@@ -40,6 +40,7 @@ Route::get('/anuncios', 'App\Http\Controllers\AnunciosController@traerAnuncios')
 // Route::resource
 
 Route::resource('/', 'App\Http\Controllers\BlogController');
+Route::resource('/blog', 'App\Http\Controllers\BlogController');
 Route::resource('/administradores', 'App\Http\Controllers\AdministradoresController');
 Route::resource('/categorias', 'App\Http\Controllers\CategoriasController');
 Route::resource('/articulos', 'App\Http\Controllers\ArticulosController');
