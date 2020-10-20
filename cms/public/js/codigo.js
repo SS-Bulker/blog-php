@@ -312,10 +312,56 @@ $(document).on('click', '.eliminarRegistro', function () {
 });
 
 /*=============================================
+DATA TABLES DEL LADO DEL SERVIDOR
+=============================================*/
+
+$.ajax({
+	url: ruta+'/administradores',
+	success: function (respuesta) {
+		console.log("respuesta", respuesta)
+	},
+	error: function(jqXHR, textStatus, errorThrown){
+		console.log(textStatus + ' ' + errorThrown)
+	}
+});
+
+/*=============================================
 DATA TABLES
 =============================================*/
 $('#tablaAdministradores').DataTable({
-	
+	processing: true,
+	serverSide: true,
+	ajax: {
+		url: ruta+'/administradores',
+	},
+	columns: [
+		{
+			data: 'id',
+			name: 'id',
+		},
+		{
+			data: 'name',
+			name: 'name',
+		},
+		{
+			data: 'email',
+			name: 'email',
+		},
+		{
+			data: 'foto',
+			name: 'foto',
+		},
+		{
+			data: 'rol',
+			name: 'rol',
+		},
+		{
+			data: 'id',
+			name: 'id',
+		}
+	],
+
+
 	"language": {
 
 	    "sProcessing": "Procesando...",

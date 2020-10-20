@@ -13,10 +13,21 @@ class AdministradoresController extends Controller
     //Mostrar todos los registros
     public function index(){
         
-        $blog = Blog::all();
-        $administradores = Administradores::all();
+         
+        
+        /* $administradores = Administradores::all();
 
-        return view('paginas.administradores', array('administradores' => $administradores, 'blog'=>$blog));
+        return view('paginas.administradores', array('administradores' => $administradores, 'blog'=>$blog)); */
+
+        if(request()->ajax()){
+
+            return datatables()->of(Administradores::all())
+            -> make(true);
+
+            $blog = Blog::all();
+
+            return view('paginas.administradores', array('blog'=>$blog));
+        }
     }
 
     //Mostrar un solo registro

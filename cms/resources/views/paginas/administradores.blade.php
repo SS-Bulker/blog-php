@@ -80,7 +80,7 @@
 
               </thead>
               <tbody>
-                @foreach($administradores as $key => $value)
+               {{--  @foreach($administradores as $key => $value)
                 
                 <tr>
                 <td>{{($key+1)}}</td>
@@ -118,14 +118,16 @@
                     </form>  --}} 
                       
 
-                  </div>
+                  {{-- </div>
                 </td>
                 </tr>
 
-                @endforeach
+                @endforeach  --}}
               </tbody>
 
-            </table>
+            </table> 
+            
+            
 
             
 
