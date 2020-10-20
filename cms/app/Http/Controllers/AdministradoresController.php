@@ -23,11 +23,12 @@ class AdministradoresController extends Controller
 
             return datatables()->of(Administradores::all())
             -> make(true);
-
-            $blog = Blog::all();
-
-            return view('paginas.administradores', array('blog'=>$blog));
         }
+            $blog = Blog::all();
+            $administradores = Administradores::all();
+
+            return view('paginas.administradores', array('blog'=>$blog, "administradores"=>$administradores));
+        
     }
 
     //Mostrar un solo registro
