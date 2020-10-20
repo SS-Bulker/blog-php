@@ -11,16 +11,15 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{url('/')}}/plugins/fontawesome-free/css/all.min.css">
   <!-- Notie -->
-  <link rel="stylesheet" href="css/plugins/notie.css">
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+  <link rel="stylesheet" href="{{url('/')}}/css/plugins/notie.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="{{url('/')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="{{url('/')}}/plugins/summernote/summernote-bs4.css">
   <!-- Tags input -->
-  <link rel="stylesheet" href="css/plugins/tagsinput.css">
+  <link rel="stylesheet" href="{{url('/')}}/css/plugins/tagsinput.css">
   {{-- CSS AdminLTE --}}
 	<link rel="stylesheet" href="{{ url('/') }}/css/plugins/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -39,15 +38,15 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- Notie Js -->
-<script src="js/plugins/notie.js"></script>
+<script src="{{url('/')}}/js/plugins/notie.js"></script>
 <!-- Summernote -->
-<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<script src="{{url('/')}}/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- Tags inputs -->
-<script src="js/plugins/tagsinput.js"></script>
+<script src="{{url('/')}}/js/plugins/tagsinput.js"></script>
 <!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="{{url('/')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="{{url('/')}}/dist/js/adminlte.js"></script>
 
 
 
@@ -74,8 +73,8 @@
 
 <input type="hidden" id="ruta" value="{{url('/')}}">
 
-<!-- Codigo propio para summernote -->
-<script src="js/codigo.js"></script>
+<!-- Codigo propio -->
+<script src="{{url('/')}}/js/codigo.js"></script>
 
 </body>
 </html>

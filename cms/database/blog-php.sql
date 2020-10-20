@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 18-10-2020 a las 23:15:07
+-- Tiempo de generación: 20-10-2020 a las 12:55:25
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.4.11
 
@@ -203,15 +203,16 @@ CREATE TABLE `blog` (
   `redes_sociales` text NOT NULL,
   `sobre_mi` text NOT NULL,
   `sobre_mi_completo` text NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `blog`
 --
 
-INSERT INTO `blog` (`id`, `dominio`, `servidor`, `titulo`, `descripcion`, `palabras_claves`, `portada`, `logo`, `icono`, `redes_sociales`, `sobre_mi`, `sobre_mi_completo`, `fecha`) VALUES
-(1, 'http://localhost/blog-php/', 'http://localhost/blog-php/cms/public/', 'Blog del viajero', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae mollitia et animi beatae voluptates, sint exercitationem magni consequuntur ipsa, recusandae. Cumque, maxime, sequi. Id at quo, voluptatum eum voluptas. Dolores.', '[\"lorem\", \"ipsum\", \"dolor\", \"sit\", \"amet\"]', 'vistas/img/articulos/articulo-01/articulo01.png', 'vistas/img/logotipo-negativo.png', 'vistas/img/icono.jpg', '[\r\n{\"url\":\"https://www.facebook.com\", \"icono\":\"fab fa-facebook-f\", \"background\":\"#1475E0\"},\r\n\r\n{\"url\":\"https://www.instagram.com\", \"icono\":\"fab fa-instagram\", \"background\":\"#B18768\"},\r\n\r\n{\"url\":\"https://www.twitter.com\", \"icono\":\"fab fa-twitter\", \"background\":\"#00A6FF\"},\r\n\r\n{\"url\":\"https://www.youtube.com\", \"icono\":\"fab fa-youtube\", \"background\":\"#F95F62\"},\r\n\r\n{\"url\":\"https://www.snapchat.com\", \"icono\":\"fab fa-snapchat-ghost\", \"background\":\"#FF9052\"}\r\n]', '<div class=\"sobreMi\">\r\n					\r\n					<h4><a href=\"http://localhost/blog-php/sobre-mi\">Sobre Mi</a></h4>\r\n\r\n					<img src=\"vistas/img/sobreMi.jpg\" alt=\"Lorem ipsum dolor sit amet\" class=\"img-fluid my-1\">\r\n\r\n					<p class=\"small\">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum odio, eos architecto atque numquam alias laboriosam minima beatae consectetur.</p>\r\n\r\n				</div>', '<div> <h1>Sobre Mi</h1><img src=\"vistas/img/sobreMi.jpg\" alt=\"Lorem ipsum dolor sit amet\" class=\"img-fluid my-2\" width=\"100%\">  	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum odio, eos architecto atque numquam alias laboriosam minima beatae consectetur.  	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit culpa mollitia cupiditate natus iusto! Commodi odio ipsum modi nesciunt pariatur quod aut aliquid sint repellendus, deleniti, possimus, expedita qui ad.</p>  	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum odio, eos architecto atque numquam alias laboriosam minima beatae consectetur.  	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit culpa mollitia cupiditate natus iusto! Commodi odio ipsum modi nesciunt pariatur quod aut aliquid sint repellendus, deleniti, possimus, expedita qui ad.</p>  </div>', '2020-10-18 23:14:37');
+INSERT INTO `blog` (`id`, `dominio`, `servidor`, `titulo`, `descripcion`, `palabras_claves`, `portada`, `logo`, `icono`, `redes_sociales`, `sobre_mi`, `sobre_mi_completo`, `fecha`, `updated_at`) VALUES
+(1, 'http://localhost/blog-php/', 'http://localhost/blog-php/cms/public/', 'Blog del viajero', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae mollitia et animi beatae voluptates, sint exercitationem magni consequuntur ipsa, recusandae. Cumque, maxime, sequi. Id at quo, voluptatum eum voluptas. Dolores.', '[\"viajeros\",\"viajar\",\"travel\",\"juanito\",\"internacional\",\"viajes\"]', 'img/blog/735.jpeg', 'img/blog/905.png', 'img/blog/126.jpeg', '[{\"url\":\"https://www.facebook.com\",\"icono\":\"fab fa-facebook-f\",\"background\":\"#1475E0\"},{\"url\":\"https://www.instagram.com\",\"icono\":\"fab fa-instagram\",\"background\":\"#B18768\"},{\"url\":\"https://www.twitter.com\",\"icono\":\"fab fa-twitter\",\"background\":\"#00A6FF\"},{\"url\":\"https://www.youtube.com\",\"icono\":\"fab fa-youtube\",\"background\":\"#F95F62\"},{\"url\":\"https://www.snapchat.com\",\"icono\":\"fab fa-snapchat-ghost\",\"background\":\"#FF9052\"}]', '<div class=\"sobreMi\">\r\n					\r\n					<h4><a href=\"http://localhost/blog-php/sobre-mi\">Sobre Mi</a></h4><p class=\"small\"><img src=\"http://localhost/blog-php/cms/public/img/blog/3988c7f88ebcb58c6ce932b957b6f332.png\" style=\"width: 50%; float: left;\" class=\"note-float-left\"></p><p class=\"small\">Hola munfdo Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum odio, eos architecto atque numquam alias laboriosam minima beatae consectetur.<br></p>\r\n\r\n				</div>', '<div> <h1>Sobre Mi</h1>  	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum odio, eos architecto atque numquam alias laboriosam minima beatae consectetur.  	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit culpa mollitia cupiditate natus iusto! Commodi odio ipsum modi nesciunt pariatur quod aut aliquid sint repellendus, deleniti, possimus, expedita qui ad.</p>  	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum odio, eos architecto atque numquam alias laboriosam minima beatae consectetur.  	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit culpa mollitia cupiditate natus iusto! Commodi odio ipsum modi nesciunt pariatur quod aut aliquid sint repellendus, deleniti, possimus, expedita qui ad.</p>  <img src=\"http://localhost/blog-php/cms/public/img/blog/a4a042cf4fd6bfb47701cbc8a1653ada.jpg\" style=\"width: 529.6px;\"></div>', '2020-10-19 21:02:10', '2020-10-20 02:02:10');
 
 -- --------------------------------------------------------
 
@@ -331,6 +332,8 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` text COLLATE utf8mb4_unicode_ci,
+  `rol` text COLLATE utf8mb4_unicode_ci,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -342,8 +345,10 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'juan', 'juanrincon@protonmail.com', NULL, '$2y$10$dg/m20MY6QgtFH5GzzKxHegUOLzjTdToJYpg/sSTRInE35lQqbdw2', '2OdEp9hJoeRyNndiGoRnOGnrJ8gkUWi1zan4oAY03oMiM0PviHBbsD0Xfaqw', '2020-10-17 21:18:13', '2020-10-17 21:18:13');
+INSERT INTO `users` (`id`, `name`, `email`, `foto`, `rol`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'juan', 'juanrincon@protonmail.com', NULL, 'administrador', NULL, '$2y$10$dg/m20MY6QgtFH5GzzKxHegUOLzjTdToJYpg/sSTRInE35lQqbdw2', '2OdEp9hJoeRyNndiGoRnOGnrJ8gkUWi1zan4oAY03oMiM0PviHBbsD0Xfaqw', '2020-10-17 21:18:13', '2020-10-17 21:18:13'),
+(2, 'Eliseo', 'gioniouzumaki@gmail.com', NULL, NULL, NULL, '$2y$10$Ab6rPCs4yBV3Dq45SvL3IuRClGvXcsQcNYPoyl.uxOWJ/1ZPIIn0.', NULL, '2020-10-20 03:40:33', '2020-10-20 03:40:33'),
+(3, 'Veronica', 'test@test.com', NULL, NULL, NULL, '$2y$10$Bf2RuJeVZ7gxNNM49k4riePcNvdgpScpx7nRs25JkK6eZNGoFZ/gK', NULL, '2020-10-20 03:45:45', '2020-10-20 03:45:45');
 
 --
 -- Índices para tablas volcadas
@@ -479,7 +484,7 @@ ALTER TABLE `opiniones`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
