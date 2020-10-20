@@ -243,3 +243,103 @@ function upload_smc(file){
 	})
 
 }
+
+/*=============================================
+PREGUNTAR ANTES ELIMINAR REGISTRO
+=============================================*/
+$(document).on('click', '.eliminarRegistro', function () {
+	
+	var action = $(this).attr('action');
+	var method = $(this).attr('method');
+	var pagina = $(this).attr('pagina');
+	var token = $(this).children("[name='_token']").attr('value');
+
+	swal({
+		title: '¿Está seguro de eliminar este registro?',
+		text: '¡Si no lo está puede cancelar la acción!',
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonCOlor: '#d33',
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Si, ¡eliminar registro!'
+	}).then(function(result){
+
+		if(result.value){
+
+			var datos = new FormData();
+			datos.append('_method', method);
+			datos.append('_token', token);
+
+			$.ajax({
+
+				url: action,
+				method: 'POST',
+				data: datos,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success:function(respuesta){
+
+					if(respuesta == 'ok'){
+						swal({
+							type: 'success',
+							title: '¡El registro ha sido eliminado!',
+							showConfirmBotton: true,
+							confirmButtonText: 'Cerrar'
+
+						}).then(function(result){
+
+							if(result.value){
+
+								window.location = ruta+'/'+pagina;
+
+							}
+						})
+					}
+
+				}, 
+				error: function(jqXHR, textStatus, errorThrown){
+					console.log(textStatus + ' ' + errorThrown)
+				}
+
+
+			})
+
+		}
+	})
+
+});
+
+/*=============================================
+DATA TABLES
+=============================================*/
+$('#tablaAdministradores').DataTable({
+	
+	"language": {
+
+	    "sProcessing": "Procesando...",
+	    "sLengthMenu": "Mostrar _MENU_ registros",
+	    "sZeroRecords": "No se encontraron resultados",
+	    "sEmptyTable": "Ningún dato disponible en esta tabla",
+	    "sInfo": "Mostrando registros del _START_ al _END_",
+	    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0",
+	    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+	    "sInfoPostFix": "",
+	    "sSearch": "Buscar:",
+	    "sUrl": "",
+	    "sInfoThousands": ",",
+	    "sLoadingRecords": "Cargando...",
+	    "oPaginate": {
+	      "sFirst": "Primero",
+	      "sLast": "Último",
+	      "sNext": "Siguiente",
+	      "sPrevious": "Anterior"
+	    },
+	    "oAria": {
+	      "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+	      "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+	    }
+
+  	}
+});

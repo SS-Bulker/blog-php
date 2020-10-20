@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="{{url('/')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- summernote -->
   <link rel="stylesheet" href="{{url('/')}}/plugins/summernote/summernote-bs4.css">
+  <!-- DataTables -->
+	<link rel="stylesheet" href="{{ url('/') }}/css/plugins/dataTables.bootstrap4.min.css">	
+	<link rel="stylesheet" href="{{ url('/') }}/css/plugins/responsive.bootstrap.min.css">
   <!-- Tags input -->
   <link rel="stylesheet" href="{{url('/')}}/css/plugins/tagsinput.css">
   {{-- CSS AdminLTE --}}
@@ -43,8 +46,15 @@
 <script src="{{url('/')}}/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- Tags inputs -->
 <script src="{{url('/')}}/js/plugins/tagsinput.js"></script>
+<!-- Sweet Alert -->
+<script src="{{url('/')}}/js/plugins/sweetalert.js"></script>
 <!-- overlayScrollbars -->
 <script src="{{url('/')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- DataTables -->
+<script src="{{ url('/') }}/js/plugins/jquery.dataTables.min.js"></script>
+<script src="{{ url('/') }}/js/plugins/dataTables.bootstrap4.min.js"></script> 
+<script src="{{ url('/') }}/js/plugins/dataTables.responsive.min.js"></script>
+<script src="{{ url('/') }}/js/plugins/responsive.bootstrap.min.js"></script>	
 <!-- AdminLTE App -->
 <script src="{{url('/')}}/dist/js/adminlte.js"></script>
 

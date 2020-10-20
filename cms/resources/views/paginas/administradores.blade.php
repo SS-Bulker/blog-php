@@ -65,7 +65,7 @@
 
            <div class="card-body">
 
-            <table class="table table-bordered table-triped" width="100%">
+            <table class="table table-bordered table-triped dt-responsive" width="100%" id="tablaAdministradores">
 
               <thead>
 
@@ -99,8 +99,25 @@
                 
                 <td>
                   <div class="boton-group">
+
                   <a href="{{url('/')}}/administradores/{{{$value->id}}}" class="btn btn-warning mr-1"><i class="fas fa-pencil-alt"></i></a>
-                    <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+
+                  <button class="btn btn-danger btn-sm eliminarRegistro" action="{{url('/')}}/administradores/{{$value->id}}" method="DELETE" pagina="administradores">
+                    @csrf 
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+
+                    {{-- Eliminar registro sin --}}
+                    {{-- <form action="{{url('/')}}/administradores/{{{$value->id}}}" method="POST" class="btn btn-danger">
+                      @method('delete')
+                      @csrf
+
+                      <button type="submit" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </form>  --}} 
+                      
+
                   </div>
                 </td>
                 </tr>
@@ -297,7 +314,7 @@
                                   <strong>{{ $message }}</strong>
                               </span>
                           @enderror
-                    </div>
+                  </div>
 
                     {{-- ROL --}}
                   <div class="input-group mb-3">
@@ -413,7 +430,6 @@
 @endif
 
 
-
 @if(Session::has('no-validacion'))
 
 <script>
@@ -428,13 +444,41 @@
 
 @endif
 
-@if(Session::has('ok-editado'))
+@if(Session::has('ok-editar'))
 
 <script>
 
   notie.alert({
     type: 1,
     text: '¡El blog ha sido actualizado corectamente!',
+    time: 7
+  })
+
+</script>
+
+@endif
+
+@if(Session::has('ok-eliminar'))
+
+<script>
+
+  notie.alert({
+    type: 1,
+    text: '¡El administrador ha sido eliminado correctamente!',
+    time: 7
+  })
+
+</script>
+
+@endif
+
+@if(Session::has('no-borrar'))
+
+<script>
+
+  notie.alert({
+    type: 2,
+    text: '¡Este administrador no se puede borrar!',
     time: 7
   })
 
