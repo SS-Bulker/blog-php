@@ -47,21 +47,36 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <!-- BOTON PARA LA PAGINA DEL BLOG -->     
-          <li class="nav-item">
-          <a href="{{ url('/') }}" class="nav-link">
-            <i class="nav-icon fas fa-home"></i>
-            <p>Blog</p>
-          </a>
-          </li>
 
-          <!-- BOTON PARA LA PAGINA DEL ADMINISTRADORES -->     
-          <li class="nav-item">
-            <a href="{{ url('/administradores') }}" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
-              <p>Administradores</p>
-            </a>
-          </li>
+          @foreach($administradores as $element)
+
+            @if($_COOKIE['email_login'] == $element->email)
+
+              @if($element->rol == 'administrador')
+                
+                <!-- BOTON PARA LA PAGINA DEL BLOG -->     
+                <li class="nav-item">
+                  <a href="{{ url('/') }}" class="nav-link">
+                    <i class="nav-icon fas fa-home"></i>
+                    <p>Blog</p>
+                  </a>
+                  </li>
+
+                <!-- BOTON PARA LA PAGINA DEL ADMINISTRADORES -->     
+                <li class="nav-item">
+                  <a href="{{ url('/administradores') }}" class="nav-link">
+                    <i class="nav-icon fas fa-users-cog"></i>
+                    <p>Administradores</p>
+                  </a>
+                </li>
+
+              @endif
+
+            @endif
+
+            @endforeach
+
+          
 
           <!-- BOTON PARA LA PAGINA DEL CATEGORIAS -->     
           <li class="nav-item">
