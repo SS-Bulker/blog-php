@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Blog;
+use App\Models\Administradores;
 
 class BlogController extends Controller
 {
@@ -12,8 +13,9 @@ class BlogController extends Controller
     public function index(){
 
         $blog = Blog::all();
+        $administradores = Administradores::all();
 
-        return view('paginas.blog', array('blog'=>$blog));
+        return view('paginas.blog', array('blog'=>$blog, "administradores"=>$administradores));
 
     }
 

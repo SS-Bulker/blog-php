@@ -12,7 +12,13 @@
       
       <li class="nav-item">
           <p class="nav-link" href="{{url('/')}}">
-            Hola, Administrador
+            @foreach($administradores as $element)
+
+            @if($_COOKIE['email_login'] == $element->email)
+              Hola, {{ $element->name}}
+            @endif
+
+            @endforeach
           </p>
         </li>
 

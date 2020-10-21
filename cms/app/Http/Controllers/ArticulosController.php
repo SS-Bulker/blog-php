@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Articulos;
-
 use App\Models\Blog;
+use App\Models\Administradores;
 
 class ArticulosController extends Controller
 {
@@ -15,7 +15,8 @@ class ArticulosController extends Controller
 
         $blog = Blog::all();
         $articulos = Articulos::all();
+        $administradores = Administradores::all();
 
-        return view('paginas.articulos', array('articulos'=>$articulos, 'blog'=>$blog));
+        return view('paginas.articulos', array('articulos'=>$articulos, 'blog'=>$blog, "administradores"=>$administradores));
     }
 }

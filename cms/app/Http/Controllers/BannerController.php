@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Banner;
-
 use App\Models\Blog;
+use App\Models\Administradores;
 
 class BannerController extends Controller
 {
@@ -15,8 +15,9 @@ class BannerController extends Controller
 
         $blog = Blog::all();
         $banner = Banner::all();
+        $administradores = Administradores::all();
 
-        return view('paginas.banner', array('banner'=>$banner, 'blog'=>$blog));
+        return view('paginas.banner', array('banner'=>$banner, 'blog'=>$blog, "administradores"=>$administradores));
     }
 
 }
