@@ -28,39 +28,39 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+  {{-- Fontawesome --}}
+  <script src="https://kit.fontawesome.com/e632f1f723.js" crossorigin="anonymous"></script>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- Notie Js -->
+  <script src="{{url('/')}}/js/plugins/notie.js"></script>
+  <!-- Summernote -->
+  <script src="{{url('/')}}/plugins/summernote/summernote-bs4.min.js"></script>
+  <!-- Tags inputs -->
+  <script src="{{url('/')}}/js/plugins/tagsinput.js"></script>
+  <!-- Sweet Alert -->
+  <script src="{{url('/')}}/js/plugins/sweetalert.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="{{url('/')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- DataTables -->
+  <script src="{{ url('/') }}/js/plugins/jquery.dataTables.min.js"></script>
+  <script src="{{ url('/') }}/js/plugins/dataTables.bootstrap4.min.js"></script> 
+  <script src="{{ url('/') }}/js/plugins/dataTables.responsive.min.js"></script>
+  <script src="{{ url('/') }}/js/plugins/responsive.bootstrap.min.js"></script>	
+  <!-- AdminLTE App -->
+  <script src="{{url('/')}}/dist/js/adminlte.js"></script>
+
 </head>
+
+@if (Route::has('login'))
+
 <body class="hold-transition sidebar-mini layout-fixed">
 
-
-{{-- Fontawesome --}}
-<script src="https://kit.fontawesome.com/e632f1f723.js" crossorigin="anonymous"></script>
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- Notie Js -->
-<script src="{{url('/')}}/js/plugins/notie.js"></script>
-<!-- Summernote -->
-<script src="{{url('/')}}/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- Tags inputs -->
-<script src="{{url('/')}}/js/plugins/tagsinput.js"></script>
-<!-- Sweet Alert -->
-<script src="{{url('/')}}/js/plugins/sweetalert.js"></script>
-<!-- overlayScrollbars -->
-<script src="{{url('/')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- DataTables -->
-<script src="{{ url('/') }}/js/plugins/jquery.dataTables.min.js"></script>
-<script src="{{ url('/') }}/js/plugins/dataTables.bootstrap4.min.js"></script> 
-<script src="{{ url('/') }}/js/plugins/dataTables.responsive.min.js"></script>
-<script src="{{ url('/') }}/js/plugins/responsive.bootstrap.min.js"></script>	
-<!-- AdminLTE App -->
-<script src="{{url('/')}}/dist/js/adminlte.js"></script>
-
-
-
-
+@auth
 
   <!-- wrapper -->
 <div class="wrapper">
@@ -87,4 +87,12 @@
 <script src="{{url('/')}}/js/codigo.js"></script>
 
 </body>
+  @else
+
+  @include('paginas.login')
+
+@endauth
+
+@endif
+
 </html>
