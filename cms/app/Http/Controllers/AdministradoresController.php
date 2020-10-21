@@ -3,187 +3,227 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Administradores;
-
 use App\Models\Blog;
+use Illuminate\Support\Facades\Hash;
 
 class AdministradoresController extends Controller
 {
-    //Mostrar todos los registros
+    
+	/*=============================================
+	Mostrar todos los registros
+	=============================================*/
+	
     public function index(){
-        
-         
-        
-        /* $administradores = Administradores::all();
 
-        return view('paginas.administradores', array('administradores' => $administradores, 'blog'=>$blog)); */
+		 $administradores = Administradores::all();
+		 $blog = Blog::all();
 
-        if(request()->ajax()){
 
-            return datatables()->of(Administradores::all())
-            -> make(true);
-        }
-            $blog = Blog::all();
-            $administradores = Administradores::all();
+		 return view("paginas.administradores", array("administradores"=>$administradores, "blog"=>$blog));
 
-            return view('paginas.administradores', array('blog'=>$blog, "administradores"=>$administradores));
-        
-    }
+		/* if(request()->ajax()){
 
-    //Mostrar un solo registro
-    public function show($id){
+			  return datatables()->of(Administradores::all())
+			  ->addColumn('acciones', function($data){
 
-        $administrador = Administradores::where("id", $id)->get();
+			  	$acciones = '<div class="btn-group">
+								
+								<a href="'.url()->current().'/'.$data->id.'" class="btn btn-warning btn-sm">
+									<i class="fas fa-pencil-alt text-white"></i>
+								</a>
+
+								<button class="btn btn-danger btn-sm eliminarRegistro" action="'.url()->current().'/'.$data->id.'" method="DELETE" pagina="administradores" token="'.csrf_token().'">
+								<i class="fas fa-trash-alt"></i>
+								</button>
+
+			  				</div>';
+
+			  	return $acciones;
+
+			  })
+			  ->rawColumns(['acciones'])
+			  -> make(true);
+
+		}
+
 		$blog = Blog::all();
 		$administradores = Administradores::all();
 
-        if(count($administradores) != 0){
+		return view("paginas.administradores", array("blog"=>$blog, "administradores"=>$administradores)); */
+
+	}
+
+	/*=============================================
+	Mostrar un solo registro
+	=============================================*/
+
+	public function show($id){
+
+		$administrador = Administradores::where("id", $id)->get();
+		$blog = Blog::all();
+		$administradores = Administradores::all();
+
+		if(count($administrador) != 0){
 
 			return view("paginas.administradores", array("status"=>200, "administrador"=>$administrador, "blog"=>$blog, "administradores"=>$administradores));
+		
+		}else{ 
 
-        }else{
+			return view("paginas.administradores", array("status"=>404, "blog"=>$blog, "administradores"=>$administradores));
+		}
+	}
 
-            return view("paginas.administradores", array("status"=>404, "blog"=>$blog, "administradores"=>$administradores));
+	/*=============================================
+	Editar un registro
+	=============================================*/
+	
+	public function update($id, Request $request){
 
-        }
+		// Recoger datos
+		$datos = array("name"=>$request->input("name"),
+					   "email"=>$request->input("email"),
+					   "password_actual"=>$request->input("password_actual"),
+					   "rol"=>$request->input("rol"),
+					   "imagen_actual"=>$request->input("imagen_actual"));
 
-    }
+		$password = array("password"=>$request->input("password"));
+		$foto = array("foto"=>$request->file("foto"));
 
-    //Editar un registro
-    public function update($id, Request $request){
+		// Validar los datos
+        // https://laravel.com/docs/5.7/validation
 
-        //Recoger los datos
-        $datos = array('name'=>$request->input('name'),
-                        'email'=>$request->input('email'),
-                        'password_actual'=>$request->input('password_actual'),
-                        'rol'=>$request->input('rol'),
-                        'imagen_actual'=>$request->input('imagen_actual'));
-        
-        $password = array('password'=>$request->input('password'));
-        $imagen = array('foto'=>$request->file('foto'));
-
-
-        //Validar datos
         if(!empty($datos)){
-            
-            $validar = \Validator::make($datos, [
-                'name' => "required|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
-                'email' => 'required|regex:/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/i'
-            ]);
-        
-            //Validar contraseña
-            if($password['password'] != ''){
 
-                $validarPassword = Validator::make($password, [
+        	 $validar = \Validator::make($datos,[
 
-                    'password' => "required|regex:/^[0-9a-zA-Z]+$/i"
+        	 	'name' => "required|regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+        	 	'email' => 'required|regex:/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/i'
 
-                ]);
-                
-                if($validarPassword->fails()){
+        	 ]); 	 
 
-                    return redirect('/administradores')->with('no-validacion', '');
+	        if($password["password"] != ""){
 
-                }else{
+	        	$validarPassword = \Validator::make($password,[
 
-                    $nuevaPassword = Hash::make($password['password']);
+	                "password" => "required|regex:/^[0-9a-zA-Z]+$/i"
 
-                }
+	            ]);
 
-            }else{
+	            if($validarPassword->fails()){
 
-                $nuevaPassword = $datos['password_actual'];
+	            	return redirect("/administradores")->with("no-validacion", "");
 
-            }
+	            }else{
 
-            //Validar Foto
-            if($imagen['foto'] != ''){
+	            	$nuevaPassword = Hash::make($password['password']);
 
-                $validarImagen = \Validator::make($imagen, [
-                    'foto' => 'required|image|mimes:jpg,jpeg,png|max:2000000'
-                ]);
+	            }
+	        	 	
+		 	}else{
 
-                if($validarImagen->fails()){
+		 		$nuevaPassword = $datos["password_actual"];
+		 	}
 
-                    return redirect('/administradores')->with('no-validacion', '');
+		 	if($foto["foto"] != ""){
 
-                }
+	 		  	$validarFoto = \Validator::make($foto,[
 
-            }
+	                "foto" => "required|image|mimes:jpg,jpeg,png|max:2000000"
 
-            if($validar->fails()){
+	            ]);
 
-                return redirect('/administradores')->with('no-validacion', '');
+	            if($validarFoto->fails()){
 
-            }else{
-                
-                if($imagen['foto'] != ''){
+	            	return redirect("/administradores")->with("no-validacion", "");
 
-                    if(!empty($datos["imagen_actual"])){
+	            }
 
-                        if($datos["imagen_actual"] != "img/administradores/admin.png"){	
+		 	}
 
-                            unlink($datos["imagen_actual"]);
+		 	if($validar->fails()){
 
-                        } 			
+		 		return redirect("/administradores")->with("no-validacion", "");
 
-                    } 
+		 	}else{
 
-                    $aleatorio = mt_rand(100, 999);
+		 		if($foto["foto"] != ""){
 
-                    $ruta = 'img/administradores/'.$aleatorio.'.'.$imagen['foto']->guessExtension();
+		 			if(!empty($datos["imagen_actual"])){
 
-                    \move_uploaded_file($imagen['foto'], $ruta);
+		 				if($datos["imagen_actual"] != "img/administradores/admin.png"){	
 
-                }else{
+		 					unlink($datos["imagen_actual"]);
 
-                    $ruta = $datos['imagen_actual'];
+		 				} 			
 
-                }
+		 			} 
+		 			
+		 			$aleatorio = mt_rand(100,999);	
 
-                $datos = array('name'=>$datos['name'],
-                                'email'=>$datos['email'],
-                                'password'=>$nuevaPassword,
-                                'rol'=>$datos['rol'],
-                                'foto'=>$ruta);
-                            
-                $administrador = Administradores::where('id', $id)->update($datos);
+		 			$ruta = "img/administradores/".$aleatorio.".".$foto["foto"]->guessExtension();
 
-                return redirect('/administradores')->with('ok-editar', '');
+		 			move_uploaded_file($foto["foto"], $ruta);
 
-            }
+		 		}else{
 
-         }else{
+		 			$ruta =  $datos["imagen_actual"];
+		 		}
 
-            return redirect('/administradores')->with('error', '');
 
-         }
+		 		$datos = array("name" => $datos["name"],
+	                           "email" => $datos["email"],      
+	                            "password" => $nuevaPassword,
+	                            "rol" => $datos["rol"],
+	                            "foto" => $ruta);
 
-    }
-    //Eliminar un registro
+		 		$administrador = Administradores::where('id', $id)->update($datos);
+
+		 		return redirect("/administradores")->with("ok-editar", "");
+
+
+		 	}
+
+		}else{
+
+			return redirect("/administradores")->with("error", "");
+
+
+		}
+
+
+	}
+
+	/*=============================================
+    Eliminar un registro
+    =============================================*/
+
     public function destroy($id, Request $request){
 
-        $validar = Administradores::where('id', $id)->get();
+    	$validar = Administradores::where("id", $id)->get();
+    	
+    	if(!empty($validar) && $id != 1){
 
-        if(!empty($validar) && $id != 1){
+    		if(!empty($validar[0]["foto"])){
 
-            unlink($validar[0]['foto']);
+    			unlink($validar[0]["foto"]);
+    		
+    		}
 
-            $administrador = Administradores::where('id', $validar[0]['id'])->delete();
+    		$administrador = Administradores::where("id",$validar[0]["id"])->delete();
 
-            //return redirect('/administradores')->with('ok-eliminar', '');
+    		// return redirect("/administradores")->with("ok-eliminar", "");
 
-            //Reponder a javascript ajax
-            return 'ok';
+    		//Responder al AJAX de JS
+    		return "ok";
+    	
+    	}else{
 
-        }else{
+    		return redirect("/administradores")->with("no-borrar", "");
+    	
 
-            return redirect('/administradores')->with('no-borrar', '');
-
-        }
+    	}
 
     }
-
 
 }

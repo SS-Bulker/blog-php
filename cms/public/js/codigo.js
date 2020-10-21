@@ -11,8 +11,8 @@ AGREGAR RED
 $(document).on("click", ".agregarRed", function(){
 
 	var url = $("#url_red").val();
-	var icono = $("#icono-red").val().split(",")[0];
-	var color = $("#icono-red").val().split(",")[1];
+	var icono = $("#icono_red").val().split(",")[0];
+	var color = $("#icono_red").val().split(",")[1];
 
 	$(".listadoRed").append(`
 
@@ -104,7 +104,7 @@ $("input[type='file']").change(function(){
     VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
     =============================================*/
 
-    if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png" && imagen["type"] != "image/jpg"){
+    if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
 
     	$("input[type='file']").val("");
 
@@ -244,125 +244,178 @@ function upload_smc(file){
 
 }
 
+
 /*=============================================
-PREGUNTAR ANTES ELIMINAR REGISTRO
+Preguntar antes de Eliminar Registro
 =============================================*/
-$(document).on('click', '.eliminarRegistro', function () {
+
+$(document).on("click", ".eliminarRegistro", function(){
+
+	var action = $(this).attr("action"); 
+  	var method = $(this).attr("method");
+  	var pagina = $(this).attr("pagina");
+  	var token = $(this).children("[name='_token']").attr("value");
+  	/* var token = $(this).attr("token"); */
+
+
+  	swal({
+  		 title: '¿Está seguro de eliminar este registro?',
+  		 text: "¡Si no lo está puede cancelar la acción!",
+  		 type: 'warning',
+  		 showCancelButton: true,
+  		 confirmButtonColor: '#3085d6',
+  		 cancelButtonColor: '#d33',
+  		 cancelButtonText: 'Cancelar',
+  		 confirmButtonText: 'Si, eliminar registro!'
+  	}).then(function(result){
+
+  		if(result.value){
+
+  			var datos = new FormData();
+  			datos.append("_method", method);
+  			datos.append("_token", token);
+
+  			$.ajax({
+
+  				url: action,
+  				method: "POST",
+  				data: datos,
+  				cache: false,
+  				contentType: false,
+        		processData: false,
+        		success:function(respuesta){
+
+        			 if(respuesta == "ok"){
+
+    			 		swal({
+		                    type:"success",
+		                    title: "¡El registro ha sido eliminado!",
+		                    showConfirmButton: true,
+		                    confirmButtonText: "Cerrar"
+			                    
+			             }).then(function(result){
+
+			             	if(result.value){
+
+			             		window.location = ruta+'/'+pagina; 
+
+			             	}
+
+
+			             })
+
+        			 }
+
+        		},
+		        error: function (jqXHR, textStatus, errorThrown) {
+		            console.error(textStatus + " " + errorThrown);
+		        }
+
+  			})
+
+  		}
+
+  	})
+
+})
+
+
+/*=============================================
+DataTable Servidor de administradores
+=============================================*/
+
+// $.ajax({
+
+// 	url: ruta+"/administradores",
+// 	success: function(respuesta){
+		
+// 		console.log("respuesta", respuesta);
+
+// 	},
+// 	error: function (jqXHR, textStatus, errorThrown) {
+//         console.error(textStatus + " " + errorThrown);
+//     }
+
+// })
+
+/*=============================================
+DataTable de administradores
+=============================================*/
+
+var tablaAdministradores = $("#tablaAdministradores").DataTable({
 	
-	var action = $(this).attr('action');
-	var method = $(this).attr('method');
-	var pagina = $(this).attr('pagina');
-	var token = $(this).children("[name='_token']").attr('value');
+	/* processing: true,
+  	serverSide: true,
 
-	swal({
-		title: '¿Está seguro de eliminar este registro?',
-		text: '¡Si no lo está puede cancelar la acción!',
-		type: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
-		cancelButtonCOlor: '#d33',
-		cancelButtonText: 'Cancelar',
-		confirmButtonText: 'Si, ¡eliminar registro!'
-	}).then(function(result){
+  	ajax:{
+  		url: ruta+"/administradores"		
+  	},
 
-		if(result.value){
+  	"columnDefs":[{
+  		"searchable": true,
+  		"orderable": true,
+  		"targets": 0
+  	}],
 
-			var datos = new FormData();
-			datos.append('_method', method);
-			datos.append('_token', token);
+  	"order":[[0, "desc"]],
 
-			$.ajax({
+  	columns: [
+	  	{
+	    	data: 'id',
+	    	name: 'id'
+	  	},
+	  	{
+	  		data: 'name',
+	    	name: 'name'
+	  	},
+	  	{
+	  		data: 'email',
+	    	name: 'email'
+	  	},
+	  	{
+	  		data: 'foto',
+	    	name: 'foto',
+	    	render: function(data, type, full, meta){
 
-				url: action,
-				method: 'POST',
-				data: datos,
-				cache: false,
-				contentType: false,
-				processData: false,
-				success:function(respuesta){
+	    		if(data == null){
 
-					if(respuesta == 'ok'){
-						swal({
-							type: 'success',
-							title: '¡El registro ha sido eliminado!',
-							showConfirmBotton: true,
-							confirmButtonText: 'Cerrar'
+	    			return '<img src="'+ruta+'/img/administradores/admin.png" class="img-fluid rounded-circle">'
 
-						}).then(function(result){
+	    		}else{
 
-							if(result.value){
+	    			return '<img src="'+ruta+'/'+data+'" class="img-fluid rounded-circle">'
+	    		}
 
-								window.location = ruta+'/'+pagina;
+	    	},
 
-							}
-						})
-					}
+	    	orderable: false
+	  	},
+	  	{
+	  		data: 'rol',
+	    	name: 'rol',
+	    	render: function(data, type, full, meta){
 
-				}, 
-				error: function(jqXHR, textStatus, errorThrown){
-					console.log(textStatus + ' ' + errorThrown)
-				}
+	    		if(data == null){
 
+	    			return 'administrador'
 
-			})
+	    		}else{
 
-		}
-	})
+	    			return data
+	    		}
 
-});
+	    	},
 
-/*=============================================
-DATA TABLES DEL LADO DEL SERVIDOR
-=============================================*/
+	    	orderable: true
 
-$.ajax({
-	url: ruta+'/administradores',
-	success: function (respuesta) {
-		console.log("respuesta", respuesta)
-	},
-	error: function(jqXHR, textStatus, errorThrown){
-		console.log(textStatus + ' ' + errorThrown)
-	}
-});
+	  	},
+	  	{
+	  		data: 'acciones',
+	    	name: 'acciones'
+	  	}
 
-/*=============================================
-DATA TABLES
-=============================================*/
-$('#tablaAdministradores').DataTable({
-	processing: true,
-	serverSide: true,
-	ajax: {
-		url: ruta+'/administradores',
-	},
-	columns: [
-		{
-			data: 'id',
-			name: 'id',
-		},
-		{
-			data: 'name',
-			name: 'name',
-		},
-		{
-			data: 'email',
-			name: 'email',
-		},
-		{
-			data: 'foto',
-			name: 'foto',
-		},
-		{
-			data: 'rol',
-			name: 'rol',
-		},
-		{
-			data: 'id',
-			name: 'id',
-		}
-	],
-
-
-	"language": {
+	], */
+ 	"language": {
 
 	    "sProcessing": "Procesando...",
 	    "sLengthMenu": "Mostrar _MENU_ registros",
@@ -388,4 +441,14 @@ $('#tablaAdministradores').DataTable({
 	    }
 
   	}
+
 });
+
+/* tablaAdministradores.on('order.dt search.dt', function(){
+
+	$.fn.dataTable.ext.errMode = 'throw';
+
+	tablaAdministradores.column(0, {search:'applied', order:'applied'}).nodes().each(function(cell, i){ cell.innerHTML = i+1})
+
+
+}).draw(); */
