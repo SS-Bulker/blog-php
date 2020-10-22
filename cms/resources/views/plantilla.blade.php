@@ -85,6 +85,8 @@
 
 <!-- Codigo propio -->
 <script src="{{url('/')}}/js/codigo.js"></script>
+<script src="{{url('/')}}/js/administradores.js"></script>
+<script src="{{url('/')}}/js/categorias.js"></script>
 
 </body>
   @else

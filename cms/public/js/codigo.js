@@ -188,6 +188,45 @@ $(".summernote-smc").summernote({
 
 });
 
+$(".summernote-articulos").summernote({
+
+	height: 300,
+	callbacks: {
+
+		onImageUpload: function(files){
+
+			for(var i = 0; i < files.length; i++){
+
+				upload_articulos(files[i]);
+
+			}
+
+		}
+
+	}
+
+});
+
+$(".summernote-editar-articulo").summernote({
+
+	height: 300,
+	callbacks: {
+
+		onImageUpload: function(files){
+
+			for(var i = 0; i < files.length; i++){
+
+				upload_editar_articulo(files[i]);
+
+			}
+
+		}
+
+	}
+
+});
+
+
 /*=============================================
 SUBIR IMAGEN AL SERVIDOR
 =============================================*/
@@ -197,6 +236,7 @@ function upload_sm(file){
 	var datos = new FormData();	
 	datos.append('file', file, file.name);
 	datos.append("ruta", ruta);
+	datos.append("carpeta", "blog");
 
 	$.ajax({
 		url: ruta+"/ajax/upload.php",
@@ -207,7 +247,9 @@ function upload_sm(file){
 		processData: false,
 		success: function (respuesta) {
 
-			$('.summernote-sm').summernote("insertImage", respuesta);
+			$('.summernote-sm').summernote("insertImage", respuesta, function ($image) {
+			  $image.attr('class', 'img-fluid');
+			});
 
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
@@ -223,6 +265,7 @@ function upload_smc(file){
 	var datos = new FormData();	
 	datos.append('file', file, file.name);
 	datos.append("ruta", ruta);
+	datos.append("carpeta", "blog");
 
 	$.ajax({
 		url: ruta+"/ajax/upload.php",
@@ -233,7 +276,67 @@ function upload_smc(file){
 		processData: false,
 		success: function (respuesta) {
 
-			$('.summernote-smc').summernote("insertImage", respuesta);
+			$('.summernote-smc').summernote("insertImage", respuesta, function ($image) {
+			  $image.attr('class', 'img-fluid');
+			});
+
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+          console.error(textStatus + " " + errorThrown);
+      }
+
+	})
+
+}
+
+function upload_articulos(file){
+
+	var datos = new FormData();	
+	datos.append('file', file, file.name);
+	datos.append("ruta", ruta);
+	datos.append("carpeta", "articulos");
+
+	$.ajax({
+		url: ruta+"/ajax/upload.php",
+		method: "POST",
+		data: datos,
+		contentType: false,
+		cache: false,
+		processData: false,
+		success: function (respuesta) {
+
+			$('.summernote-articulos').summernote("insertImage", respuesta, function ($image) {
+			  $image.attr('class', 'img-fluid');
+			});
+
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+          console.error(textStatus + " " + errorThrown);
+      }
+
+	})
+
+}
+
+function upload_editar_articulo(file){
+
+	var datos = new FormData();	
+	datos.append('file', file, file.name);
+	datos.append("ruta", ruta);
+	datos.append("carpeta", "articulos");
+
+	$.ajax({
+		url: ruta+"/ajax/upload.php",
+		method: "POST",
+		data: datos,
+		contentType: false,
+		cache: false,
+		processData: false,
+		success: function (respuesta) {
+
+			$('.summernote-editar-articulo').summernote("insertImage", respuesta, function ($image) {
+			  $image.attr('class', 'img-fluid');
+			});
 
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
@@ -255,7 +358,7 @@ $(document).on("click", ".eliminarRegistro", function(){
   	var method = $(this).attr("method");
   	var pagina = $(this).attr("pagina");
   	var token = $(this).children("[name='_token']").attr("value");
-  	/* var token = $(this).attr("token"); */
+  	//var token = $(this).attr("token");
 
 
   	swal({
@@ -319,136 +422,61 @@ $(document).on("click", ".eliminarRegistro", function(){
 
 })
 
-
 /*=============================================
-DataTable Servidor de administradores
+Limpiar las rutas
 =============================================*/
 
-// $.ajax({
+function limpiarUrl(texto){
 
-// 	url: ruta+"/administradores",
-// 	success: function(respuesta){
-		
-// 		console.log("respuesta", respuesta);
+	var texto = texto.toLowerCase();
+	texto = texto.replace(/[á]/g, 'a');
+	texto = texto.replace(/[é]/g, 'e');
+	texto = texto.replace(/[í]/g, 'i');
+	texto = texto.replace(/[ó]/g, 'o');
+	texto = texto.replace(/[ú]/g, 'u');
+	texto = texto.replace(/[ñ]/g, 'n');
+	texto = texto.replace(/ /g, '-');
 
-// 	},
-// 	error: function (jqXHR, textStatus, errorThrown) {
-//         console.error(textStatus + " " + errorThrown);
-//     }
+	return texto;
 
-// })
+}
+
+$(document).on("keyup", ".inputRuta", function(){
+
+	$(this).val(
+
+	 	limpiarUrl($(this).val())
+
+	)
+
+})
 
 /*=============================================
-DataTable de administradores
+Evitar repetir ruta 
 =============================================*/
 
-var tablaAdministradores = $("#tablaAdministradores").DataTable({
-	
-	/* processing: true,
-  	serverSide: true,
+$(document).on("change",".inputRuta", function(){
 
-  	ajax:{
-  		url: ruta+"/administradores"		
-  	},
+	$(".alert").remove();
 
-  	"columnDefs":[{
-  		"searchable": true,
-  		"orderable": true,
-  		"targets": 0
-  	}],
+	var valorRuta = $(this).val();
+	var validarRuta = $(".validarRuta");
 
-  	"order":[[0, "desc"]],
+	for(var i = 0; i < validarRuta.length; i++){
 
-  	columns: [
-	  	{
-	    	data: 'id',
-	    	name: 'id'
-	  	},
-	  	{
-	  		data: 'name',
-	    	name: 'name'
-	  	},
-	  	{
-	  		data: 'email',
-	    	name: 'email'
-	  	},
-	  	{
-	  		data: 'foto',
-	    	name: 'foto',
-	    	render: function(data, type, full, meta){
+		 if($(validarRuta[i]).html() == valorRuta){
 
-	    		if(data == null){
+		 	 $(".inputRuta").val("");
+		 	 $(".inputRuta").parent().after(`
 
-	    			return '<img src="'+ruta+'/img/administradores/admin.png" class="img-fluid rounded-circle">'
+				<div class="alert alert-danger">¡Error! Esta ruta ya existe en la base de datos</div>	
 
-	    		}else{
+		 	 `)
 
-	    			return '<img src="'+ruta+'/'+data+'" class="img-fluid rounded-circle">'
-	    		}
+		 }
 
-	    	},
+	}
 
-	    	orderable: false
-	  	},
-	  	{
-	  		data: 'rol',
-	    	name: 'rol',
-	    	render: function(data, type, full, meta){
-
-	    		if(data == null){
-
-	    			return 'administrador'
-
-	    		}else{
-
-	    			return data
-	    		}
-
-	    	},
-
-	    	orderable: true
-
-	  	},
-	  	{
-	  		data: 'acciones',
-	    	name: 'acciones'
-	  	}
-
-	], */
- 	"language": {
-
-	    "sProcessing": "Procesando...",
-	    "sLengthMenu": "Mostrar _MENU_ registros",
-	    "sZeroRecords": "No se encontraron resultados",
-	    "sEmptyTable": "Ningún dato disponible en esta tabla",
-	    "sInfo": "Mostrando registros del _START_ al _END_",
-	    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0",
-	    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-	    "sInfoPostFix": "",
-	    "sSearch": "Buscar:",
-	    "sUrl": "",
-	    "sInfoThousands": ",",
-	    "sLoadingRecords": "Cargando...",
-	    "oPaginate": {
-	      "sFirst": "Primero",
-	      "sLast": "Último",
-	      "sNext": "Siguiente",
-	      "sPrevious": "Anterior"
-	    },
-	    "oAria": {
-	      "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-	      "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-	    }
-
-  	}
-
-});
-
-/* tablaAdministradores.on('order.dt search.dt', function(){
-
-	$.fn.dataTable.ext.errMode = 'throw';
-
-	tablaAdministradores.column(0, {search:'applied', order:'applied'}).nodes().each(function(cell, i){ cell.innerHTML = i+1})
+})
 
 
-}).draw(); */

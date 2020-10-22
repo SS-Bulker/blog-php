@@ -33,8 +33,7 @@
     },
     trimValue: false,
     allowDuplicates: false,
-    triggerChange: true,
-    editOnBackspace: false
+    triggerChange: true
   };
 
   /**
@@ -45,18 +44,16 @@
     this.itemsArray = [];
 
     this.$element = $(element);
-    this.$element.addClass('sr-only');
+    this.$element.hide();
 
     this.isSelect = (element.tagName === 'SELECT');
     this.multiple = (this.isSelect && element.hasAttribute('multiple'));
     this.objectItems = options && options.itemValue;
     this.placeholderText = element.hasAttribute('placeholder') ? this.$element.attr('placeholder') : '';
-    this.name = element.hasAttribute('name') ? this.$element.attr('name') : '';
-    this.type = element.hasAttribute('type') ? this.$element.attr('type') : 'text';
     this.inputSize = Math.max(1, this.placeholderText.length);
 
     this.$container = $('<div class="bootstrap-tagsinput"></div>');
-    this.$input = $('<input type="' + this.type + '" name="' + this.name + '" placeholder="' + this.placeholderText + '"/>').appendTo(this.$container);
+    this.$input = $('<input type="text" placeholder="' + this.placeholderText + '"/>').appendTo(this.$container);
 
     this.$element.before(this.$container);
 
@@ -143,14 +140,15 @@
 
       // add a tag element
 
-      var $tag = $('<span class="' + htmlEncode(tagClass) + (itemTitle !== null ? ('" title="' + itemTitle) : '') + '">' + htmlEncode(itemText) + '<span data-role="remove"></span></span>');
+      var $tag = $('<span class="badge ' + htmlEncode(tagClass) + (itemTitle !== null ? ('" title="' + itemTitle) : '') + '">' + htmlEncode(itemText) + '<span data-role="remove"></span></span>');
       $tag.data('item', item);
       self.findInputWrapper().before($tag);
+      $tag.after(' ');
 
       // Check to see if the tag exists in its raw or uri-encoded form
       var optionExists = (
-        $('option[value="' + encodeURIComponent(itemValue).replace(/"/g, '\\"') + '"]', self.$element).length ||
-        $('option[value="' + htmlEncode(itemValue).replace(/"/g, '\\"') + '"]', self.$element).length
+        $('option[value="' + encodeURIComponent(itemValue) + '"]', self.$element).length ||
+        $('option[value="' + htmlEncode(itemValue) + '"]', self.$element).length
       );
 
       // add <option /> if item represents a value not present in one of the <select />'s options
@@ -277,7 +275,7 @@
             return self.options.itemValue(item).toString();
           });
 
-      self.$element.val( val.join(self.options.delimiter) );
+      self.$element.val(val, true);
 
       if (self.options.triggerChange)
         self.$element.trigger('change');
@@ -422,9 +420,6 @@
             if (doGetCaretPosition($input[0]) === 0) {
               var prev = $inputWrapper.prev();
               if (prev.length) {
-                if (self.options.editOnBackspace === true) {
-                  $input.val(prev.data('item'));
-                }
                 self.remove(prev.data('item'));
               }
             }
