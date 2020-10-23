@@ -210,17 +210,13 @@ class ArticulosController extends Controller
 
             if($validar->fails()){
                
-                return redirect("/articulos")->with("no-validacion", "");
+                return redirect("articulos")->with("no-validacion", "");
 
             }else{
 
                 if($imagen["imagen_temporal"] != ""){
 
-                    if(\file_exists($datos["imagen_actual"])){
-
-                        unlink($datos["imagen_actual"]);
-
-                    }
+                    unlink($datos["imagen_actual"]);
 
                     $aleatorio = mt_rand(100,999);
 
@@ -251,7 +247,7 @@ class ArticulosController extends Controller
 	                    imagecopyresampled($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 	                    imagepng($destino, $ruta);
 	                    
-	                }
+                    }
 
                 }else{
 
@@ -264,10 +260,7 @@ class ArticulosController extends Controller
                 foreach($origen as $fichero){
 
                     copy($fichero, $directorio."/".substr($fichero, 19));
-
-                    if(\file_exists($fichero)){
                     unlink($fichero); 
-                    }
                     
                 } 
 
@@ -281,9 +274,11 @@ class ArticulosController extends Controller
 
                 $articulo = Articulos::where('id_articulo', $id)->update($datos); 
 
-                return redirect("/articulos")->with("ok-editar", "");
-            }
+                return redirect("articulos")->with("ok-editar", "");
 
+                
+            }
+            
         }else{
 
              return redirect("/articulos")->with("error", "");
