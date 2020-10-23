@@ -13,7 +13,7 @@
 
        <div class="col-sm-6">
 
-        <button class="btn btn-success float-left" data-toggle="modal" data-target="#crearArticulos">Crear nuevo articulos</button>
+        <button class="btn btn-success float-left" data-toggle="modal" data-target="#crearArticulo">Crear nuevo articulos</button>
 
        </div>
 
@@ -130,9 +130,9 @@
                   <td>
                     <div class="boton-group">
 
-                      <a href="{{url('/')}}/articulos/{{{$value->id_cat}}}" class="btn btn-warning mr-1"><i class="fas fa-pencil-alt"></i></a>
+                      <a href="{{url('/')}}/articulos/{{{$value->id_articulo}}}" class="btn btn-warning mr-1"><i class="fas fa-pencil-alt"></i></a>
     
-                      <button class="btn btn-danger  eliminarRegistro" action="{{url('/')}}/articulos/{{$value->id_cat}}" method="DELETE" pagina="articulos">
+                      <button class="btn btn-danger  eliminarRegistro" action="{{url('/')}}/articulos/{{$value->id_articulo}}" method="DELETE" pagina="articulos">
                         @csrf 
                         <i class="fas fa-trash-alt"></i>
                       </button>
@@ -146,7 +146,7 @@
            <!-- /.card-body -->
            <div class="card-footer">
 
-            <button class="btn btn-success float-right" data-toggle="modal" data-target="#crearArticulos">Crear nuevo articulo</button>
+            <button class="btn btn-success float-right" data-toggle="modal" data-target="#crearArticulo">Crear nuevo articulo</button>
 
            </div>
            <!-- /.card-footer-->
@@ -164,9 +164,9 @@
 <!-- /.content-wrapper -->
 
 <!-- Modal para crear articulos -->
-<div class="modal" id="crearArticulos">
+<div class="modal" id="crearArticulo">
 
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
 
     <div class="modal-content">
 
@@ -189,67 +189,86 @@
 
         <div class="modal-body">
 
-          {{-- titulo categoria --}}
+            {{-- titulo categoria --}}
             <div class="input-group mb-3">
                 <div class="input-group-append input-group-text">
                   <i class="fas fa-list-ul"></i>
                 </div>
 
-              <input id="name" type="text" class="form-control" name="titulo_categoria" value="{{ old('titulo_categoria') }}" required  placeholder="Ingresa un titulo para la categoria" autofocus>
-
+                <select name="id_cat" class="form-control" id="" required>
+                  <option value="">Elige Categoria</option>
+                  @foreach($categorias as $key => $value)
+                    <option value="{{$value->id_categoria}}">{{$value->titulo_categoria}}</option>
+                  @endforeach
+                </select>
             </div>
 
-            {{-- descripcion categoria --}}
+            {{-- titulo articulo --}}
+            <div class="input-group mb-3">
+              <div class="input-group-append input-group-text">
+                <i class="fas fa-list-ul"></i>
+              </div>
+
+              <input type="text" class="form-control" name="titulo_articulo" id="" value="{{ old('titulo_articulo') }}" required placeholder="Ingrese un titulo para el articulo">
+              
+            </div>
+
+            {{-- descripcion articulo --}}
             <div class="input-group mb-3">
               <div class="input-group-append input-group-text">
                 <i class="fas fa-pencil-alt"></i>
               </div>
 
-              <input type="text" class="form-control" name="descripcion_categoria" id="" value="{{ old('descripcion_categoria') }}" required placeholder="Ingresa una descripción para esta categoria" maxlength="30">
+              <input type="text" class="form-control" name="descripcion_articulo" id="" value="{{ old('descripcion_articulo') }}" required placeholder="Ingrese una descripción para el articulo" maxlength="220">
               
             </div>
 
-            {{-- ruta categoria --}}
+            {{-- ruta articulo --}}
             <div class="input-group mb-3">
               <div class="input-group-append input-group-text">
                 <i class="fas fa-link"></i>
               </div>
 
-                  <input id="text" type="text" class="form-control inputRuta" name="ruta_categoria" value="{{ old('ruta_categoria') }}" placeholder="Ingresa la ruta para esta categoria" required>
+                  <input id="text" type="text" class="form-control inputRuta" name="ruta_articulo" value="{{ old('ruta_articulo') }}" placeholder="Ingresa la ruta para este articulo" required>
 
             </div>
 
-            {{-- palabras claves categoria --}}
+            {{-- palabras claves articulo --}}
             <hr class="pb-2">
-
             <div class="input-group mb-3">
               <label for="">Palabras Claves <span class="small">(Separar por comas)</span></label>
 
-              <input id="name" type="text" class="form-control" value="categoria" name="p_claves_categoria" data-role="tagsinput" required>
+              <input id="name" type="text" class="form-control" value="articulo" name="p_claves_articulo" data-role="tagsinput" required>
 
             </div>
 
-            {{-- Foto categoria --}}
-                <hr class="pb-2">
+            {{-- Portada articulo --}}
+            <hr class="pb-2">
+            <div class="form-group my-2 text-center">
 
-                <div class="form-group my-2 text-center">
+              <div class="btn btn-default btn-file">
 
-                  <div class="btn btn-default btn-file">
+                <i class="fas fa-paperclip"></i> Adjuntar portada del articulo
 
-                    <i class="fas fa-paperclip"></i> Adjuntar imagen de la categoria
+                <input type="file" name="img_articulo" required>
 
-                    <input type="file" name="img_categoria" required>
+              </div>
 
-                  </div>
+              <br>
 
-                  <br>
+              <img class="previsualizarImg_img_articulo img-fluid py-2">
 
-                  <img class="previsualizarImg_img_categoria img-fluid py-2">
-
-                  <p class="help-block small">Dimensiones: 1024px * 576px | Peso Max. 2MB | Formato: JPG o PNG</p>
+              <p class="help-block small">Dimensiones: 680px * 400px | Peso Max. 2MB | Formato: JPG o PNG</p>
 
             </div>
-            
+
+            {{-- Contenido categoria --}}
+            <hr class="pb-2">
+            <div class="input-group mb-3">
+
+              <textarea name="contenido_articulo" class="form-control summernote-articulos" id="" required></textarea>
+
+            </div>
         
         </div>
 
@@ -273,17 +292,17 @@
 
 </div>
 
-<!-- Modal para editar categorias -->
+<!-- Modal para editar articulos -->
 @if(isset($status))
   @if($status == 200)
-  @foreach($categoria as $key2 => $value2)
+  @foreach($articulo as $key => $value)
   <div class="modal" id="editarArticulo">
 
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
   
       <div class="modal-content">
   
-      <form method="POST" action="{{url('/')}}/articulos/{{$value2->id_categoria}}" enctype="multipart/form-data">
+      <form method="POST" action="{{url('/')}}/articulos/{{$value->id_articulo}}" enctype="multipart/form-data">
           @method('put')
           @csrf
   
@@ -302,82 +321,117 @@
           </div>
   
           <div class="modal-body">
-  
+
             {{-- titulo categoria --}}
-              <div class="input-group mb-3">
-                  <div class="input-group-append input-group-text">
-                    <i class="fas fa-list-ul"></i>
-                  </div>
-  
-                <input id="name" type="text" class="form-control" name="titulo_categoria" value="{{ $value2->titulo_categoria }}" required  placeholder="Ingresa un titulo para la categoria" autofocus>
-  
-              </div>
-  
-              {{-- descripcion categoria --}}
-              <div class="input-group mb-3">
+            <div class="input-group mb-3">
                 <div class="input-group-append input-group-text">
-                  <i class="fas fa-pencil-alt"></i>
+                  <i class="fas fa-list-ul"></i>
                 </div>
-  
-                <input type="text" class="form-control" name="descripcion_categoria" id="" value="{{ $value2->descripcion_categoria }}" required placeholder="Ingresa una descripción para esta categoria" maxlength="30">
-                
-              </div>
-  
-              {{-- ruta categoria --}}
-              <div class="input-group mb-3">
-                <div class="input-group-append input-group-text">
-                  <i class="fas fa-link"></i>
-                </div>
-  
-                    <input id="text" type="text" class="form-control inputRuta" name="ruta_categoria" value="{{ $value2->ruta_categoria }}" placeholder="Ingresa la ruta para esta categoria" required>
-  
-              </div>
-  
-              {{-- palabras claves categoria --}}
-              <hr class="pb-2">
-  
-              <div class="input-group mb-3">
-                <label for="">Palabras Claves <span class="small">(Separar por comas)</span></label>
 
-                @php
-                      $tags = json_decode($value2->p_claves_categoria, true);
+                <select name="id_cat" class="form-control" id="" required>
+      
+                  @foreach ($categorias as $key => $value2)
 
-                      $palabras_claves_editar = '';
+                    @if ($value2->id_categoria == $value->id_cat)
+
+                      <option value="{{$value->id_cat}}">{{$value2->titulo_categoria}}</option>
+
+                    @endif
+               
+                  @endforeach
+
+                  @foreach ($categorias as $key => $value2)
+            
+                    @if ($value2->id_categoria != $value->id_cat)
+
+                        <option value="{{$value2->id_categoria}}">{{$value2->titulo_categoria}}</option>
+
+                    @endif
+
+                  @endforeach
+                </select>
+            </div>
+
+            {{-- titulo articulo --}}
+            <div class="input-group mb-3">
+              <div class="input-group-append input-group-text">
+                <i class="fas fa-list-ul"></i>
+              </div>
+
+              <input type="text" class="form-control" name="titulo_articulo" id="" value="{{ $value->titulo_articulo }}" required placeholder="Ingrese un titulo para el articulo">
+              
+            </div>
+
+            {{-- descripcion articulo --}}
+            <div class="input-group mb-3">
+              <div class="input-group-append input-group-text">
+                <i class="fas fa-pencil-alt"></i>
+              </div>
+
+              <input type="text" class="form-control" name="descripcion_articulo" id="" value="{{ $value->descripcion_articulo }}" required placeholder="Ingrese una descripción para el articulo" maxlength="220">
+              
+            </div>
+
+            {{-- ruta articulo --}}
+            <div class="input-group mb-3">
+              <div class="input-group-append input-group-text">
+                <i class="fas fa-link"></i>
+              </div>
+
+                  <input id="text" type="text" class="form-control inputRuta" name="ruta_articulo" value="{{ $value->ruta_articulo }}" placeholder="Ingresa la ruta para este articulo" required>
+
+            </div>
+
+            {{-- palabras claves articulo --}}
+            <hr class="pb-2">
+            <div class="input-group mb-3">
+              <label for="">Palabras Claves <span class="small">(Separar por comas)</span></label>
+
+              @php
+                      $tags = json_decode($value->p_claves_articulo, true);
+
+                      $p_claves_editar = '';
 
                       foreach ($tags as $element ) {
-                        $palabras_claves_editar .= $element.',';
+                        $p_claves_editar .= $element.',';
                       }
 
                 @endphp
-  
-                    <input id="name" type="text" class="form-control" value="{{$palabras_claves_editar}}" name="p_claves_categoria" data-role="tagsinput" required>
-  
-              </div>
-  
-              {{-- Foto categoria --}}
-                  <hr class="pb-2">
-  
-                  <div class="form-group my-2 text-center">
-  
-                    <div class="btn btn-default btn-file">
-  
-                      <i class="fas fa-paperclip"></i> Adjuntar imagen de la categoria
-  
-                      <input type="file" name="img_categoria">
-  
-                    </div>
-  
-                    <br>
-  
-                  <img class="previsualizarImg_img_categoria img-fluid py-2" src="{{url('/')}}/{{$value2->img_categoria}}">
 
-                  <input type="hidden" value="{{$value2->img_categoria}}" name="imagen_actual">
-  
-                    <p class="help-block small">Dimensiones: 1024px * 576px | Peso Max. 2MB | Formato: JPG o PNG</p>
-  
+              <input id="name" type="text" class="form-control" value="{{$p_claves_editar}}" name="p_claves_articulo" data-role="tagsinput" required>
+
+            </div>
+
+            {{-- Portada articulo --}}
+            <hr class="pb-2">
+            <div class="form-group my-2 text-center">
+
+              <div class="btn btn-default btn-file">
+
+                <i class="fas fa-paperclip"></i> Adjuntar portada del articulo
+
+                <input type="file" name="img_articulo">
+
               </div>
-              
-          
+
+              <br>
+
+              <img class="previsualizarImg_img_articulo img-fluid py-2" src="{{url('/')}}/{{$value->portada_articulo}}">
+
+              <input type="hidden" value="{{$value->portada_articulo}}" name="imagen_actual">
+
+              <p class="help-block small">Dimensiones: 680px * 400px | Peso Max. 2MB | Formato: JPG o PNG</p>
+
+            </div>
+
+            {{-- Contenido categoria --}}
+            <hr class="pb-2">
+            <div class="input-group mb-3">
+
+              <textarea name="contenido_articulo" class="form-control summernote-editar-articulo" id="" required>{{$value->contenido_articulo}}</textarea>
+
+            </div>
+        
           </div>
   
           <div class="modal-footer d-flex justify-content-between">
@@ -404,6 +458,90 @@
   <script>$("#editarArticulo").modal()</script>
 
   @endif
+
+@endif
+
+@if(Session::has('no-validacion'))
+
+<script>
+
+  notie.alert({
+    type: 2,
+    text: '¡Hay campos no válidos en el formulario!',
+    time: 7
+  })
+
+</script>
+
+@endif
+
+@if(Session::has('ok-creado'))
+
+<script>
+
+  notie.alert({
+    type: 1,
+    text: '¡La categoria ha sido creada exitosamente!',
+    time: 7
+  })
+
+</script>
+
+@endif
+
+@if(Session::has('ok-editar'))
+
+<script>
+
+  notie.alert({
+    type: 1,
+    text: '¡El blog ha sido actualizado corectamente!',
+    time: 7
+  })
+
+</script>
+
+@endif
+
+@if(Session::has('ok-eliminar'))
+
+<script>
+
+  notie.alert({
+    type: 1,
+    text: '¡El administrador ha sido eliminado correctamente!',
+    time: 7
+  })
+
+</script>
+
+@endif
+
+@if(Session::has('no-borrar'))
+
+<script>
+
+  notie.alert({
+    type: 2,
+    text: '¡Este administrador no se puede borrar!',
+    time: 7
+  })
+
+</script>
+
+@endif
+
+@if(Session::has('error'))
+
+<script>
+
+  notie.alert({
+    type: 3,
+    text: '¡Error al editar!',
+    time: 7
+  })
+
+</script>
 
 @endif
 
