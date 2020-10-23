@@ -216,7 +216,11 @@ class ArticulosController extends Controller
 
                 if($imagen["imagen_temporal"] != ""){
 
-                    unlink($datos["imagen_actual"]);
+                    if(\file_exists($datos["imagen_actual"])){
+
+                        unlink($datos["imagen_actual"]);
+
+                    }
 
                     $aleatorio = mt_rand(100,999);
 
@@ -260,7 +264,10 @@ class ArticulosController extends Controller
                 foreach($origen as $fichero){
 
                     copy($fichero, $directorio."/".substr($fichero, 19));
+
+                    if(\file_exists($fichero)){
                     unlink($fichero); 
+                    }
                     
                 } 
 
@@ -296,11 +303,14 @@ class ArticulosController extends Controller
             $origen = glob('img/articulos/'.$validar[0]['ruta_articulo'].'/*');
 
             foreach($origen as $fichero){
-                unlink($fichero);
+                unlink(\file_exists($fichero));
             }
 
             //Eliminamos directorio
-            rmdir('img/articulos/'.$validar[0]['ruta_articulo']);
+            if(\file_exists('img/articulos/'.$validar[0]['ruta_articulo'])){
+                rmdir('img/articulos/'.$validar[0]['ruta_articulo']);
+            }
+            
 
     		$articulo = Articulos::where("id_articulo",$validar[0]["id_articulo"])->delete();
 
