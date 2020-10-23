@@ -58,43 +58,37 @@
 
 @if (Route::has('login'))
 
-<body class="hold-transition sidebar-mini layout-fixed">
-
 @auth
 
+<body class="hold-transition sidebar-mini layout-fixed">
+
   <!-- wrapper -->
-<div class="wrapper">
+  <div class="wrapper">
 
-  @include('modulos.header')
+    @include('modulos.header')
 
-  @include('modulos.sidebar')
+    @include('modulos.sidebar')
 
-  @yield('content')
+    @yield('content')
 
-  @include('modulos.footer')
+    @include('modulos.footer')
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+  </div>
+
 
 <input type="hidden" id="ruta" value="{{url('/')}}">
-
 <!-- Codigo propio -->
 <script src="{{url('/')}}/js/codigo.js"></script>
 <script src="{{url('/')}}/js/administradores.js"></script>
 <script src="{{url('/')}}/js/categorias.js"></script>
+<script src="{{url('/')}}/js/articulos.js"></script>
 
 </body>
-  @else
+@else
 
-  @include('paginas.login')
+@include('paginas.login')
 
 @endauth
 
 @endif
-
 </html>

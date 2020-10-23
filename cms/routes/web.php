@@ -17,13 +17,13 @@ Route::get('/', function () {
     return view('plantilla');
 });
 
-Route::view('/', 'paginas.blog');
+/* Route::view('/', 'paginas.blog');
 Route::view('/administradores', 'paginas.administradores');
 Route::view('/categorias', 'paginas.categorias');
 Route::view('/articulos', 'paginas.articulos');
 Route::view('/opiniones', 'paginas.opiniones');
 Route::view('/banner', 'paginas.banner');
-Route::view('/anuncios', 'paginas.anuncios');
+Route::view('/anuncios', 'paginas.anuncios'); */
 
 
 /* 
@@ -39,6 +39,11 @@ Route::get('/anuncios', 'App\Http\Controllers\AnunciosController@traerAnuncios')
 /* RUTAS QUE INCLUYEN TODOS LOS METODOS HTTP */
 // Route::resource
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::resource('/', 'App\Http\Controllers\BlogController');
 Route::resource('/blog', 'App\Http\Controllers\BlogController');
 Route::resource('/administradores', 'App\Http\Controllers\AdministradoresController');
@@ -47,12 +52,3 @@ Route::resource('/articulos', 'App\Http\Controllers\ArticulosController');
 Route::resource('/opiniones', 'App\Http\Controllers\OpinionesController');
 Route::resource('/banner', 'App\Http\Controllers\BannerController');
 Route::resource('/anuncios', 'App\Http\Controllers\AnunciosController');
-
-
-
-
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

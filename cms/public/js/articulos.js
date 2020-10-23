@@ -22,7 +22,7 @@ DataTable de artículos
 
 var tablaArticulos = $("#tablaArticulos").DataTable({
 	
-	processing: true,
+	/* processing: true,
   	serverSide: true,
 
   	ajax:{
@@ -94,7 +94,7 @@ var tablaArticulos = $("#tablaArticulos").DataTable({
 
    	  }
 
-	],
+	], */
  	"language": {
 
 	    "sProcessing": "Procesando...",
@@ -124,9 +124,9 @@ var tablaArticulos = $("#tablaArticulos").DataTable({
 
 });
 
-tablaArticulos.on('order.dt search.dt', function(){
+/* tablaArticulos.on('order.dt search.dt', function(){
 
 	tablaArticulos.column(0, {search:'applied', order:'applied'}).nodes().each(function(cell, i){ cell.innerHTML = i+1})
 
 
-}).draw();
+}).draw(); */

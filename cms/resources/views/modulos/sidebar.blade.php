@@ -15,7 +15,7 @@
 
           @foreach($administradores as $element)
 
-            @if($_COOKIE['email_login'] == $element->email)
+            @if(isset($_COOKIE["email_login"]) && $_COOKIE['email_login'] == $element->email)
               @if($element->foto == '')
               <img src="{{ url('/') }}/vistas/img/admin.png" class="img-circle elevation-2" alt="User Image">
               @else
@@ -32,7 +32,7 @@
             
             @foreach($administradores as $element)
 
-            @if($_COOKIE['email_login'] == $element->email)
+            @if(isset($_COOKIE["email_login"]) && $_COOKIE['email_login'] == $element->email)
               {{ $element->name}}
             @endif
 
@@ -50,7 +50,7 @@
 
           @foreach($administradores as $element)
 
-            @if($_COOKIE['email_login'] == $element->email)
+            @if(isset($_COOKIE["email_login"]) && $_COOKIE['email_login'] == $element->email)
 
               @if($element->rol == 'administrador')
                 

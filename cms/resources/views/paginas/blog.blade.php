@@ -1,6 +1,6 @@
 @foreach($administradores as $element)
 
-@if($_COOKIE['email_login'] == $element->email)
+@if (isset($_COOKIE["email_login"]) && $_COOKIE["email_login"] == $element->email)
 
 @if($element->rol == 'administrador')
  
@@ -481,12 +481,10 @@
 
 @else
 
-<script>
-  window.location="{{url('/categorias')}}"
-</script>
+<script>window.location="{{url('/categorias')}}"</script>
 
 @endif
 
 @endif
-
-@endforeach
+           
+@endforeach 
