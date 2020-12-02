@@ -19,7 +19,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{url('/')}}/plugins/summernote/summernote-bs4.css">
   <!-- DataTables -->
-	<link rel="stylesheet" href="{{ url('/') }}/css/plugins/dataTables.bootstrap4.min.css">	
+	<link rel="stylesheet" href="{{ url('/') }}/css/plugins/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" href="{{ url('/') }}/css/plugins/responsive.bootstrap.min.css">
   <!-- Tags input -->
   <link rel="stylesheet" href="{{url('/')}}/css/plugins/tagsinput.css">
@@ -48,9 +48,9 @@
   <script src="{{url('/')}}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- DataTables -->
   <script src="{{ url('/') }}/js/plugins/jquery.dataTables.min.js"></script>
-  <script src="{{ url('/') }}/js/plugins/dataTables.bootstrap4.min.js"></script> 
+  <script src="{{ url('/') }}/js/plugins/dataTables.bootstrap4.min.js"></script>
   <script src="{{ url('/') }}/js/plugins/dataTables.responsive.min.js"></script>
-  <script src="{{ url('/') }}/js/plugins/responsive.bootstrap.min.js"></script>	
+  <script src="{{ url('/') }}/js/plugins/responsive.bootstrap.min.js"></script>
   <!-- AdminLTE App -->
   <script src="{{url('/')}}/dist/js/adminlte.js"></script>
 
@@ -82,6 +82,7 @@
 <script src="{{url('/')}}/js/administradores.js"></script>
 <script src="{{url('/')}}/js/categorias.js"></script>
 <script src="{{url('/')}}/js/articulos.js"></script>
+  <script src="{{url('/')}}/js/opiniones.js"></script>
 
 </body>
 @else

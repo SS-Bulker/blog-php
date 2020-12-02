@@ -275,13 +275,13 @@ CONTENIDO ARTÍCULO
 
 										 ?>
 
-										<span class="small float-right"><?php echo $value["nombre_admin"]; ?> | <?php echo $formatoFechaR; ?></span>
+										<span class="small float-right"><?php echo $value["name"]; ?> | <?php echo $formatoFechaR; ?></span>
 
 									</div>
 
 									<div class="col-3 col-sm-4 col-lg-2 p-2">
 									
-										<img src="<?php echo $blog["servidor"].$value["foto_admin"];?>" class="img-thumbnail">	
+										<img src="<?php echo $blog["servidor"].$value["foto"];?>" class="img-thumbnail">	
 
 									</div>
 																
