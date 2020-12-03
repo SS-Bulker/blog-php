@@ -1,23 +1,5 @@
 
 /*=============================================
-Probar la conexión con DataTable de Opiniones
-=============================================*/
-
-// $.ajax({
-
-//   url: ruta + "/opiniones",
-//   success: function(respuesta) {
-
-//     console.log("respuesta", respuesta);
-
-//   },
-//   error: function (jqXHR, textStatus, errorThrown) {
-//       console.error(textStatus + " " + errorThrown);
-//   }
-
-// })
-
-/*=============================================
 DataTable de Opiniones
 =============================================*/
 

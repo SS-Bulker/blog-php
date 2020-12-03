@@ -1,60 +1,11 @@
-/*=============================================
-Probar la conexión con DataTable de Anuncios
-=============================================*/
-
-// $.ajax({
-
-//   url: ruta + "/anuncios",
-//   success: function(respuesta) {
-
-//     console.log("respuesta", respuesta);
-
-//   },
-//   error: function (jqXHR, textStatus, errorThrown) {
-//       console.error(textStatus + " " + errorThrown);
-//   }
-
-// })
-
 
 /*=============================================
 DataTable de Anuncios
 =============================================*/
 
-var tablaAnuncios = $("#tablaAnuncios").DataTable({
+$("#tablaAnuncios").DataTable({
 
-  processing: true,
-  serverSide: true,
-
-  ajax: {
-    url: ruta + "/anuncios"
-  },
-
-  "columnDefs": [{
-            "searchable": true,
-            "orderable": true,
-            "targets": 0
-        }],
-  "order": [[ 0, 'desc' ]],
-  columns: [{
-    data: 'id_anuncio',
-    name: 'id_anuncio'
-
-  }, {
-    data: 'codigo_anuncio',
-    name: 'codigo_anuncio'
-
-  }, {
-    data: 'pagina_anuncio',
-    name: 'pagina_anuncio'
-
-  }, {
-    data: 'acciones',
-    name: 'acciones'
-
-  }],
   "language": {
-
     "sProcessing": "Procesando...",
     "sLengthMenu": "Mostrar _MENU_ registros",
     "sZeroRecords": "No se encontraron resultados",
@@ -77,12 +28,6 @@ var tablaAnuncios = $("#tablaAnuncios").DataTable({
       "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
       "sSortDescending": ": Activar para ordenar la columna de manera descendente"
     }
-
   }
 })
 
-tablaAnuncios.on( 'order.dt search.dt', function () {
-    tablaAnuncios.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-        cell.innerHTML = i+1;
-    } );
-} ).draw();

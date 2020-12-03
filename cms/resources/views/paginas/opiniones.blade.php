@@ -141,6 +141,7 @@
  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
 {{-- Modal para editar una opinion --}}
 @if(isset($status))
     @if($status == 200)
@@ -227,7 +228,7 @@
                             <div class="form-group">
                                 <label for="">Contendio de la opinión <span class="small">Fecha de la opinión: {{$valueOpinion->fecha_opinion}}</span></label>
                                 <div class="input-group mb-3">
-                                    <textarea name="contenido_opinion" class="form-control" id="">{{old('contenido_opinion', $valueOpinion->contenido_opinion)}}</textarea>
+                                    <textarea name="contenido_opinion" class="form-control" cols="80" rows="10" id="">{{old('contenido_opinion', $valueOpinion->contenido_opinion)}}</textarea>
                                 </div>
                             </div>
 
@@ -236,7 +237,7 @@
                             <div class="form-group">
                                 <label for="">Añadir una respuesta</label>
                                 <div class="input-group mb-3">
-                                    <textarea name="respuesta_opinion" class="form-control" id="">{{old('respuesta_opinion', $valueOpinion->respuesta_opinion)}}</textarea>
+                                    <textarea name="respuesta_opinion" class="form-control" cols="80" rows="10" id="">{{old('respuesta_opinion', $valueOpinion->respuesta_opinion)}}</textarea>
                                 </div>
                             </div>
 
