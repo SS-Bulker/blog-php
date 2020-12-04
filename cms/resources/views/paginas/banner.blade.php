@@ -94,7 +94,7 @@
                                    <a href="{{url('/')}}/banner/{{$value->id_banner}}" class="btn btn-warning mr-1"><i class="fas fa-pencil-alt"></i></a>
                                    <button class="btn btn-danger eliminarRegistro" pagina="banner" method="DELETE" action="{{url('/')}}/banner/{{$value->id_banner}}">
                                        @csrf
-                                       <i class="fas fa-trash-alt"></i
+                                       <i class="fas fa-trash-alt"></i>
                                    </button>
                                </td>
                            </tr>

@@ -84,6 +84,7 @@
 <script src="{{url('/')}}/js/articulos.js"></script>
 <script src="{{url('/')}}/js/opiniones.js"></script>
 <script src="{{url('/')}}/js/banner.js"></script>
+<script src="{{url('/')}}/js/anuncios.js"></script>
 
 </body>
 @else

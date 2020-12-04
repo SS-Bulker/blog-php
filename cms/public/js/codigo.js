@@ -17,13 +17,13 @@ $(document).on("click", ".agregarRed", function(){
 	$(".listadoRed").append(`
 
 		<div class="col-lg-12">
-      
+
         <div class="input-group mb-3">
-          
+
           <div class="input-group-prepend">
-            
+
             <div class="input-group-text text-white" style="background:`+color+`">
-              
+
                 <i class="`+icono+`"></i>
 
             </div>
@@ -33,9 +33,9 @@ $(document).on("click", ".agregarRed", function(){
           <input type="text" class="form-control" value="`+url+`">
 
           <div class="input-group-prepend">
-            
+
             <div class="input-group-text" style="cursor:pointer">
-              
+
                 <span class="bg-danger px-2 rounded-circle eliminarRed" red="`+icono+`" url="`+url+`">&times;</span>
 
             </div>
@@ -51,7 +51,7 @@ $(document).on("click", ".agregarRed", function(){
 	//Actualizar el registro de la BD
 
 	var listaRed = JSON.parse($("#listaRed").val());
-	
+
 	listaRed.push({
 
 		 "url": url,
@@ -77,9 +77,9 @@ $(document).on("click", ".eliminarRed", function(){
 	for(var i = 0; i < listaRed.length; i++){
 
 		if(red == listaRed[i]["icono"] && url == listaRed[i]["url"]){
-			
+
 			listaRed.splice(i, 1);
-			
+
 			$(this).parent().parent().parent().parent().remove();
 
 			$("#listaRed").val(JSON.stringify(listaRed));
@@ -99,7 +99,7 @@ $("input[type='file']").change(function(){
 
 	var imagen = this.files[0];
 	var tipo = $(this).attr("name");
-	
+
 	/*=============================================
     VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
     =============================================*/
@@ -226,7 +226,24 @@ $(".summernote-editar-articulo").summernote({
 
 });
 
+$(".summernote-anuncios").summernote({
 
+    height: 300,
+    callbacks: {
+
+        onImageUpload: function(files){
+
+            for(var i = 0; i < files.length; i++){
+
+                upload_anuncios(files[i]);
+
+            }
+
+        }
+
+    }
+
+});
 
 /*=============================================
 SUBIR IMAGEN AL SERVIDOR
@@ -234,7 +251,7 @@ SUBIR IMAGEN AL SERVIDOR
 
 function upload_sm(file){
 
-	var datos = new FormData();	
+	var datos = new FormData();
 	datos.append('file', file, file.name);
 	datos.append("ruta", ruta);
 	datos.append("carpeta", "blog");
@@ -263,7 +280,7 @@ function upload_sm(file){
 
 function upload_smc(file){
 
-	var datos = new FormData();	
+	var datos = new FormData();
 	datos.append('file', file, file.name);
 	datos.append("ruta", ruta);
 	datos.append("carpeta", "blog");
@@ -292,7 +309,7 @@ function upload_smc(file){
 
 function upload_articulos(file){
 
-	var datos = new FormData();	
+	var datos = new FormData();
 	datos.append('file', file, file.name);
 	datos.append("ruta", ruta);
 	datos.append("carpeta", "articulos");
@@ -321,7 +338,7 @@ function upload_articulos(file){
 
 function upload_editar_articulo(file){
 
-	var datos = new FormData();	
+	var datos = new FormData();
 	datos.append('file', file, file.name);
 	datos.append("ruta", ruta);
 	datos.append("carpeta", "articulos");
@@ -348,6 +365,35 @@ function upload_editar_articulo(file){
 
 }
 
+function upload_anuncios(file){
+
+    var datos = new FormData();
+    datos.append('file', file, file.name);
+    datos.append("ruta", ruta);
+    datos.append("carpeta", "anuncios");
+
+    $.ajax({
+        url: ruta+"/ajax/upload.php",
+        method: "POST",
+        data: datos,
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function (respuesta) {
+
+            $('.summernote-anuncios').summernote("insertImage", respuesta, function ($image) {
+                $image.attr('class', 'img-fluid');
+            });
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error(textStatus + " " + errorThrown);
+        }
+
+    })
+
+}
+
 
 /*=============================================
 Preguntar antes de Eliminar Registro
@@ -355,7 +401,7 @@ Preguntar antes de Eliminar Registro
 
 $(document).on("click", ".eliminarRegistro", function(){
 
-	var action = $(this).attr("action"); 
+	var action = $(this).attr("action");
   	var method = $(this).attr("method");
   	var pagina = $(this).attr("pagina");
   	var token = $(this).children("[name='_token']").attr("value");
@@ -396,12 +442,12 @@ $(document).on("click", ".eliminarRegistro", function(){
 		                    title: "¡El registro ha sido eliminado!",
 		                    showConfirmButton: true,
 		                    confirmButtonText: "Cerrar"
-			                    
+
 			             }).then(function(result){
 
 			             	if(result.value){
 
-			             		window.location = ruta+'/'+pagina; 
+			             		window.location = ruta+'/'+pagina;
 
 			             	}
 
@@ -453,7 +499,7 @@ $(document).on("keyup", ".inputRuta", function(){
 })
 
 /*=============================================
-Evitar repetir ruta 
+Evitar repetir ruta
 =============================================*/
 
 $(document).on("change",".inputRuta", function(){
@@ -470,7 +516,7 @@ $(document).on("change",".inputRuta", function(){
 		 	 $(".inputRuta").val("");
 		 	 $(".inputRuta").parent().after(`
 
-				<div class="alert alert-danger">¡Error! Esta ruta ya existe en la base de datos</div>	
+				<div class="alert alert-danger">¡Error! Esta ruta ya existe en la base de datos</div>
 
 		 	 `)
 

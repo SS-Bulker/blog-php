@@ -104,9 +104,17 @@
                            <td>{{$value->fecha_opinion}}</td>
                            {{-- Aprobación --}}
                            @if($value->aprobacion_opinion === 0)
-                               <td><a href="#" class="btn btn-danger">Por aprobar</a></td>
+                               <td>
+                                   <span class="d-inline-block" data-toggle="popover" data-content="Falta por aprobar esta opinión">
+                                        <button class="btn btn-danger" style="pointer-events: none;" type="button" disabled>Por aprobar</button>
+                                   </span>
+                               </td>
                            @else
-                               <td><a href="#" class="btn btn-success">Aprobado</a></td>
+                               <td>
+                                   <span class="d-inline-block" data-toggle="popover" data-content="La opinión esta activa, aún asi la puedes cambiar">
+                                         <button class="btn btn-success" style="pointer-events: none;" type="button" disabled>Aprobado</button>
+                                   </span>
+                               </td>
                            @endif
                            {{-- Rol del administrador --}}
                            <td>{{$value->rol}}</td>
